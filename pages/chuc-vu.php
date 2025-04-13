@@ -1,4 +1,4 @@
-<!-- <?php 
+<?php 
 
 
 // BE
@@ -77,7 +77,7 @@ session_start();
 
 <!-- UI -->
   <!-- Modal -->
-  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <form method="POST">
@@ -98,11 +98,11 @@ session_start();
         </form>
       </div>
     </div>
-  </div> -->
+  </div> 
 
   <!-- Content Wrapper. Contains page content -->
-  <!-- <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+   <div class="content-wrapper">
+     Content Header (Page header) 
     <section class="content-header">
       <h1>
         Chức vụ
@@ -299,7 +299,7 @@ session_start();
       <!-- /.row -->
     </section>
     <!-- /.content -->
-  </div> -->
+  </div> 
 
 <?php
   // include
@@ -311,4 +311,4 @@ session_start();
 //   header('Location: dang-nhap.php');
 // }
 
-?> -->
+?> 
