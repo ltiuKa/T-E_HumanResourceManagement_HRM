@@ -1,81 +1,74 @@
-<!-- <?php 
+<?php
 
-// BE
 // create session
 session_start();
 
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
-//   // include file
-//   include('../layouts/header.php');
-//   include('../layouts/topbar.php');
-//   include('../layouts/sidebar.php');
+if (isset($_SESSION['username']) && isset($_SESSION['level'])) {
+  // include file
+  include('../layouts/header.php');
+  include('../layouts/topbar.php');
+  include('../layouts/sidebar.php');
 
-//   if(isset($_POST['edit']))
-//   {
-//     $id = $_POST['idSpecial'];
-//     echo "<script>location.href='sua-chuyen-mon.php?p=staff&a=specialize&id=".$id."'</script>";
-//   }
+  if (isset($_POST['edit'])) {
+    $id = $_POST['idSpecial'];
+    echo "<script>location.href='sua-chuyen-mon.php?p=staff&a=specialize&id=" . $id . "'</script>";
+  }
 
-//   // show data
-//   $showData = "SELECT id, ma_chuyen_mon, ten_chuyen_mon, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua FROM chuyen_mon ORDER BY ngay_tao DESC";
-//   $result = mysqli_query($conn, $showData);
-//   $arrShow = array();
-//   while ($row = mysqli_fetch_array($result)) {
-//     $arrShow[] = $row;
-//   }
+  // show data
+  $showData = "SELECT id, ma_chuyen_mon, ten_chuyen_mon, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua FROM chuyen_mon ORDER BY ngay_tao DESC";
+  $result = mysqli_query($conn, $showData);
+  $arrShow = array();
+  while ($row = mysqli_fetch_array($result)) {
+    $arrShow[] = $row;
+  }
 
-//   // create code room
-//   $specialCode = "MCM" . time();
+  // create code room
+  $specialCode = "MCM" . time();
 
-//   // delete record
-//   if(isset($_POST['save']))
-//   {
-//     // create array error
-//     $error = array();
-//     $success = array();
-//     $showMess = false;
+  // delete record
+  if (isset($_POST['save'])) {
+    // create array error
+    $error = array();
+    $success = array();
+    $showMess = false;
 
-//     // get id in form
-//     $titleSpecial = $_POST['titleSpecial'];
-//     $description = $_POST['description'];
-//     $personCreate = $_POST['personCreate'];
-//     $dateCreate = date("Y-m-d H:i:s");
-//     $personEdit = $_POST['personCreate'];
-//     $dateEdit = date("Y-m-d H:i:s");
+    // get id in form
+    $titleSpecial = $_POST['titleSpecial'];
+    $description = $_POST['description'];
+    $personCreate = $_POST['personCreate'];
+    $dateCreate = date("Y-m-d H:i:s");
+    $personEdit = $_POST['personCreate'];
+    $dateEdit = date("Y-m-d H:i:s");
 
-//     // validate
-//     if(empty($titleSpecial))
-//       $error['titleSpecial'] = 'Vui lòng nhập <b> tên chuyên môn </b>';
+    // validate
+    if (empty($titleSpecial))
+      $error['titleSpecial'] = 'Vui lòng nhập <b> tên chuyên môn </b>';
 
-//     if(!$error)
-//     {
-//       $showMess = true;
-//       $insert = "INSERT INTO chuyen_mon(ma_chuyen_mon, ten_chuyen_mon, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua) VALUES('$specialCode','$titleSpecial', '$description', '$personCreate', '$dateCreate', '$personEdit', '$dateEdit')";
-//       mysqli_query($conn, $insert);
-//       $success['success'] = 'Thêm chuyên môn thành công';
-//       echo '<script>setTimeout("window.location=\'chuyen-mon.php?p=staff&a=specialize\'",1000);</script>';
-//     }
+    if (!$error) {
+      $showMess = true;
+      $insert = "INSERT INTO chuyen_mon(ma_chuyen_mon, ten_chuyen_mon, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua) VALUES('$specialCode','$titleSpecial', '$description', '$personCreate', '$dateCreate', '$personEdit', '$dateEdit')";
+      mysqli_query($conn, $insert);
+      $success['success'] = 'Thêm chuyên môn thành công';
+      echo '<script>setTimeout("window.location=\'chuyen-mon.php?p=staff&a=specialize\'",1000);</script>';
+    }
+  }
 
-//   }
+  // delete record
+  if (isset($_POST['delete'])) {
+    $showMess = true;
 
-//   // delete record
-//   if(isset($_POST['delete']))
-//   {
-//     $showMess = true;
+    $id = $_POST['idSpecial'];
+    $delete = "DELETE FROM chuyen_mon WHERE id = $id";
+    mysqli_query($conn, $delete);
+    $success['success'] = 'Xóa chuyên môn thành công.';
+    echo '<script>setTimeout("window.location=\'chuyen-mon.php?p=staff&a=specialize\'",1000);</script>';
+  }
 
-//     $id = $_POST['idSpecial'];
-//     $delete = "DELETE FROM chuyen_mon WHERE id = $id";
-//     mysqli_query($conn, $delete);
-//     $success['success'] = 'Xóa chuyên môn thành công.';
-//     echo '<script>setTimeout("window.location=\'chuyen-mon.php?p=staff&a=specialize\'",1000);</script>';
-//   }
+?>
 
-// ?>
 
-<!-- UI -->
   <!-- Modal -->
-  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <form method="POST">
@@ -96,10 +89,10 @@ session_start();
         </form>
       </div>
     </div>
-  </div> -->
+  </div>
 
   <!-- Content Wrapper. Contains page content -->
-  <!-- <div class="content-wrapper">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -126,49 +119,42 @@ session_start();
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <?php 
-                // show error
-                if($row_acc['quyen'] != 1) 
-                {
-                  echo "<div class='alert alert-warning alert-dismissible'>";
-                  echo "<h4><i class='icon fa fa-ban'></i> Thông báo!</h4>";
-                  echo "Bạn <b> không có quyền </b> thực hiện chức năng này.";
-                  echo "</div>";
-                }
+              <?php
+              // show error
+              if ($row_acc['quyen'] != 1) {
+                echo "<div class='alert alert-warning alert-dismissible'>";
+                echo "<h4><i class='icon fa fa-ban'></i> Thông báo!</h4>";
+                echo "Bạn <b> không có quyền </b> thực hiện chức năng này.";
+                echo "</div>";
+              }
               ?>
 
-              <?php 
-                // show error
-                if(isset($error)) 
-                {
-                  if($showMess == false)
-                  {
-                    echo "<div class='alert alert-danger alert-dismissible'>";
-                    echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
-                    echo "<h4><i class='icon fa fa-ban'></i> Lỗi!</h4>";
-                    foreach ($error as $err) 
-                    {
-                      echo $err . "<br/>";
-                    }
-                    echo "</div>";
+              <?php
+              // show error
+              if (isset($error)) {
+                if ($showMess == false) {
+                  echo "<div class='alert alert-danger alert-dismissible'>";
+                  echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
+                  echo "<h4><i class='icon fa fa-ban'></i> Lỗi!</h4>";
+                  foreach ($error as $err) {
+                    echo $err . "<br/>";
                   }
+                  echo "</div>";
                 }
+              }
               ?>
-              <?php 
-                // show success
-                if(isset($success)) 
-                {
-                  if($showMess == true)
-                  {
-                    echo "<div class='alert alert-success alert-dismissible'>";
-                    echo "<h4><i class='icon fa fa-check'></i> Thành công!</h4>";
-                    foreach ($success as $suc) 
-                    {
-                      echo $suc . "<br/>";
-                    }
-                    echo "</div>";
+              <?php
+              // show success
+              if (isset($success)) {
+                if ($showMess == true) {
+                  echo "<div class='alert alert-success alert-dismissible'>";
+                  echo "<h4><i class='icon fa fa-check'></i> Thành công!</h4>";
+                  foreach ($success as $suc) {
+                    echo $suc . "<br/>";
                   }
+                  echo "</div>";
                 }
+              }
               ?>
               <form action="" method="POST">
                 <div class="row">
@@ -195,9 +181,9 @@ session_start();
                       <input type="text" class="form-control" id="exampleInputEmail1" value="<?php echo date('d-m-Y H:i:s'); ?>" name="dateCreate" readonly>
                     </div>
                     <!-- /.form-group -->
-                    <?php 
-                      if($_SESSION['level'] == 1)
-                        echo "<button type='submit' class='btn btn-primary' name='save'><i class='fa fa-plus'></i> Thêm chuyên môn</button>";
+                    <?php
+                    if ($_SESSION['level'] == 1)
+                      echo "<button type='submit' class='btn btn-primary' name='save'><i class='fa fa-plus'></i> Thêm chuyên môn</button>";
                     ?>
                   </div>
                   <!-- /.col -->
@@ -217,25 +203,24 @@ session_start();
               <div class="table-responsive">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
-                  <tr>
-                    <th>STT</th>
-                    <th>Mã chuyên môn</th>
-                    <th>Tên chuyên môn</th>
-                    <th>Mô tả</th>
-                    <th>Người tạo</th>
-                    <th>Ngày tạo</th>
-                    <th>Người sửa</th>
-                    <th>Ngày sửa</th>
-                    <th>Sửa</th>
-                    <th>Xóa</th>
-                  </tr>
+                    <tr>
+                      <th>STT</th>
+                      <th>Mã chuyên môn</th>
+                      <th>Tên chuyên môn</th>
+                      <th>Mô tả</th>
+                      <th>Người tạo</th>
+                      <th>Ngày tạo</th>
+                      <th>Người sửa</th>
+                      <th>Ngày sửa</th>
+                      <th>Sửa</th>
+                      <th>Xóa</th>
+                    </tr>
                   </thead>
                   <tbody>
-                  <?php 
+                    <?php
                     $count = 1;
-                    foreach ($arrShow as $arrS) 
-                    {
-                  ?>
+                    foreach ($arrShow as $arrS) {
+                    ?>
                       <tr>
                         <td><?php echo $count; ?></td>
                         <td><?php echo $arrS['ma_chuyen_mon']; ?></td>
@@ -246,38 +231,32 @@ session_start();
                         <td><?php echo $arrS['nguoi_sua']; ?></td>
                         <td><?php echo $arrS['ngay_sua']; ?></td>
                         <th>
-                          <?php 
-                            if($row_acc['quyen'] == 1)
-                            {
-                              echo "<form method='POST'>";
-                              echo "<input type='hidden' value='".$arrS['id']."' name='idSpecial'/>";
-                              echo "<button type='submit' class='btn bg-orange btn-flat'  name='edit'><i class='fa fa-edit'></i></button>";
-                              echo "</form>";
-                            }
-                            else
-                            {
-                              echo "<button type='button' class='btn bg-orange btn-flat' disabled><i class='fa fa-edit'></i></button>";
-                            }
+                          <?php
+                          if ($row_acc['quyen'] == 1) {
+                            echo "<form method='POST'>";
+                            echo "<input type='hidden' value='" . $arrS['id'] . "' name='idSpecial'/>";
+                            echo "<button type='submit' class='btn bg-orange btn-flat'  name='edit'><i class='fa fa-edit'></i></button>";
+                            echo "</form>";
+                          } else {
+                            echo "<button type='button' class='btn bg-orange btn-flat' disabled><i class='fa fa-edit'></i></button>";
+                          }
                           ?>
-                          
+
                         </th>
                         <th>
-                          <?php 
-                            if($row_acc['quyen'] == 1)
-                            {
-                              echo "<button type='button' class='btn bg-maroon btn-flat' data-toggle='modal' data-target='#exampleModal' data-whatever='".$arrS['id']."'><i class='fa fa-trash'></i></button>";
-                            }
-                            else
-                            {
-                              echo "<button type='button' class='btn bg-maroon btn-flat' disabled><i class='fa fa-trash'></i></button>";
-                            }
+                          <?php
+                          if ($row_acc['quyen'] == 1) {
+                            echo "<button type='button' class='btn bg-maroon btn-flat' data-toggle='modal' data-target='#exampleModal' data-whatever='" . $arrS['id'] . "'><i class='fa fa-trash'></i></button>";
+                          } else {
+                            echo "<button type='button' class='btn bg-maroon btn-flat' disabled><i class='fa fa-trash'></i></button>";
+                          }
                           ?>
                         </th>
                       </tr>
-                  <?php
+                    <?php
                       $count++;
                     }
-                  ?>
+                    ?>
                   </tbody>
                 </table>
               </div>
@@ -291,16 +270,14 @@ session_start();
       <!-- /.row -->
     </section>
     <!-- /.content -->
-  </div> -->
+  </div>
 
 <?php
   // include
   include('../layouts/footer.php');
-// }
-// else
-// {
-//   // go to pages login
-//   header('Location: dang-nhap.php');
-// }
+} else {
+  // go to pages login
+  header('Location: dang-nhap.php');
+}
 
 ?>

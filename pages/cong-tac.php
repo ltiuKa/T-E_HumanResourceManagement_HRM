@@ -68,7 +68,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['level'])) {
 
 ?>
 
-  <!-- UI -->
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

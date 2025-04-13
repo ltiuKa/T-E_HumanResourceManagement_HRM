@@ -257,8 +257,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['level'])) {
   </div>
 
 <?php
-  include
-    include('../layouts/footer.php');
+  // include
+include('../layouts/footer.php');
 } else {
   // go to pages login
   header('Location: dang-nhap.php');
