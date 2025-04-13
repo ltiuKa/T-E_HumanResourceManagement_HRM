@@ -130,6 +130,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
     </section>
 
     <!-- Main content -->
+     <!-- Main content -->
     <section class="content">
       <div class="row">
         <!-- left column -->
