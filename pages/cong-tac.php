@@ -1,9 +1,8 @@
-<?php 
+<?php
 // create session
 session_start();
 
-if(isset($_SESSION['username']) && isset($_SESSION['level']))
-{
+if (isset($_SESSION['username']) && isset($_SESSION['level'])) {
   // include file
   include('../layouts/header.php');
   include('../layouts/topbar.php');
@@ -21,8 +20,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
   $maCongTac = "MCT" . time();
 
   // delete record
-  if(isset($_POST['save']))
-  {
+  if (isset($_POST['save'])) {
     // create array error
     $error = array();
     $success = array();
@@ -39,32 +37,29 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
     $ngayTao = date("Y-m-d H:i:s");
 
     // validate
-    if($maNhanVien == 'chon')
+    if ($maNhanVien == 'chon')
       $error['maNhanVien'] = 'error';
-    if(empty($ngayKetThuc))
+    if (empty($ngayKetThuc))
       $error['ngayKetThuc'] = 'error';
-    if(!empty($ngayKetThuc) && ($ngayBatDau > $ngayKetThuc))
+    if (!empty($ngayKetThuc) && ($ngayBatDau > $ngayKetThuc))
       $error['loiNgay'] = 'error';
-    if(empty($diaDiem))
+    if (empty($diaDiem))
       $error['diaDiem'] = 'error';
 
     // kiem tra nhan vien co dang trong qua trinh cong tac
     $check = "SELECT nhanvien_id FROM cong_tac WHERE nhanvien_id = '$maNhanVien'";
     $resultCheck = mysqli_query($conn, $check);
-    if(mysqli_num_rows($resultCheck) != 0)
-    {
+    if (mysqli_num_rows($resultCheck) != 0) {
       $error['dangCongTac'] = 'error';
       echo "<script>alert('Nhân viên này đang trong quá trình công tác');</script>";
     }
 
 
-    if(!$error)
-    {
+    if (!$error) {
       $showMess = true;
       $insert = "INSERT INTO cong_tac(ma_cong_tac, nhanvien_id, ngay_bat_dau, ngay_ket_thuc, dia_diem, muc_dich, ghi_chu, nguoi_tao, ngay_tao) VALUES('$maCongTac','$maNhanVien', '$ngayBatDau', '$ngayKetThuc', '$diaDiem', '$mucDich', '$ghiChu', '$nguoiTao', '$ngayTao')";
       $result = mysqli_query($conn, $insert);
-      if($result)
-      {
+      if ($result) {
         $success['success'] = 'Thêm công tác thành công';
         echo '<script>setTimeout("window.location=\'cong-tac.php?p=collaborate&a=add-collaborate\'",1000);</script>';
       }
@@ -73,9 +68,9 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
 
 ?>
 
-<!-- UI -->
+  <!-- UI -->
   <!-- Content Wrapper. Contains page content -->
-  <!-- <div class="content-wrapper">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -102,31 +97,27 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <?php 
-                // show error
-                if($row_acc['quyen'] != 1) 
-                {
-                  echo "<div class='alert alert-warning alert-dismissible'>";
-                  echo "<h4><i class='icon fa fa-ban'></i> Thông báo!</h4>";
-                  echo "Bạn <b> không có quyền </b> thực hiện chức năng này.";
+              <?php
+              // show error
+              if ($row_acc['quyen'] != 1) {
+                echo "<div class='alert alert-warning alert-dismissible'>";
+                echo "<h4><i class='icon fa fa-ban'></i> Thông báo!</h4>";
+                echo "Bạn <b> không có quyền </b> thực hiện chức năng này.";
+                echo "</div>";
+              }
+              ?>
+              <?php
+              // show success
+              if (isset($success)) {
+                if ($showMess == true) {
+                  echo "<div class='alert alert-success alert-dismissible'>";
+                  echo "<h4><i class='icon fa fa-check'></i> Thành công!</h4>";
+                  foreach ($success as $suc) {
+                    echo $suc . "<br/>";
+                  }
                   echo "</div>";
                 }
-              ?>
-              <?php 
-                // show success
-                if(isset($success)) 
-                {
-                  if($showMess == true)
-                  {
-                    echo "<div class='alert alert-success alert-dismissible'>";
-                    echo "<h4><i class='icon fa fa-check'></i> Thành công!</h4>";
-                    foreach ($success as $suc) 
-                    {
-                      echo $suc . "<br/>";
-                    }
-                    echo "</div>";
-                  }
-                }
+              }
               ?>
               <form action="" method="POST">
                 <div class="row">
@@ -139,29 +130,36 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
                       <label for="exampleInputEmail1">Chọn nhân viên<span style="color: red;">*</span> : </label>
                       <select class="form-control" name="maNhanVien">
                         <option value="chon">--- Chọn nhân viên ---</option>
-                        <?php 
-                        foreach ($arrNV as $nv) 
-                        {
-                          echo "<option value='".$nv['id']."'>". $nv['ma_nv'] ." - ".$nv['ten_nv']."</option>";
+                        <?php
+                        foreach ($arrNV as $nv) {
+                          echo "<option value='" . $nv['id'] . "'>" . $nv['ma_nv'] . " - " . $nv['ten_nv'] . "</option>";
                         }
                         ?>
                       </select>
-                      <small style="color: red;"><?php if(isset($error['maNhanVien'])){ echo 'Vui lòng chọn nhân viên';} ?></small>
+                      <small style="color: red;"><?php if (isset($error['maNhanVien'])) {
+                                                    echo 'Vui lòng chọn nhân viên';
+                                                  } ?></small>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Ngày bắt đầu<span style="color: red;">*</span>: </label>
                       <input type="date" class="form-control" id="exampleInputEmail1" name="ngayBatDau" value="<?php echo date('Y-m-d'); ?>">
-                      <small style="color: red;"><?php if(isset($error['loiNgay'])){ echo 'Ngày bắt đầu <b> không được sau </b> ngày kết thúc';} ?></small>
-                    </div>  
+                      <small style="color: red;"><?php if (isset($error['loiNgay'])) {
+                                                    echo 'Ngày bắt đầu <b> không được sau </b> ngày kết thúc';
+                                                  } ?></small>
+                    </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Ngày kết thúc<span style="color: red;">*</span>: </label>
                       <input type="date" class="form-control" id="exampleInputEmail1" name="ngayKetThuc">
-                      <small style="color: red;"><?php if(isset($error['ngayKetThuc'])){ echo 'Vui lòng chọn ngày kết thúc';} ?></small>
+                      <small style="color: red;"><?php if (isset($error['ngayKetThuc'])) {
+                                                    echo 'Vui lòng chọn ngày kết thúc';
+                                                  } ?></small>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Địa điểm công tác<span style="color: red;">*</span>: </label>
                       <input type="text" class="form-control" id="exampleInputEmail1" name="diaDiem" placeholder="Vui lòng nhập địa điểm">
-                      <small style="color: red;"><?php if(isset($error['diaDiem'])){ echo 'Vui lòng nhập địa điểm công tác';} ?></small>
+                      <small style="color: red;"><?php if (isset($error['diaDiem'])) {
+                                                    echo 'Vui lòng nhập địa điểm công tác';
+                                                  } ?></small>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Mục đích công tác: </label>
@@ -181,9 +179,9 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
                       <input type="text" class="form-control" value="<?php echo date('Y-m-d'); ?>" name="ngayTao" readonly>
                     </div>
                     <!-- /.form-group -->
-                    <?php 
-                      if($_SESSION['level'] == 1)
-                        echo "<button type='submit' class='btn btn-primary' name='save'><i class='fa fa-plus'></i> Thêm công tác</button>";
+                    <?php
+                    if ($_SESSION['level'] == 1)
+                      echo "<button type='submit' class='btn btn-primary' name='save'><i class='fa fa-plus'></i> Thêm công tác</button>";
                     ?>
                   </div>
                   <!-- /.col -->
@@ -200,14 +198,12 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
       <!-- /.row -->
     </section>
     <!-- /.content -->
-  </div> 
+  </div>
 
 <?php
   include
-  include('../layouts/footer.php');
-}
-else
-{
+    include('../layouts/footer.php');
+} else {
   // go to pages login
   header('Location: dang-nhap.php');
 }
