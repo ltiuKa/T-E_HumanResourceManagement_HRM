@@ -1,10 +1,10 @@
 <?php 
 
 // create session
-// session_start();
+session_start();
 
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
+if(isset($_SESSION['username']) && isset($_SESSION['level']))
+{
   // include file
   include('../layouts/header.php');
   include('../layouts/topbar.php');
@@ -501,11 +501,20 @@
 <?php
   include
   include('../layouts/footer.php');
+<<<<<<< HEAD
 // }
 // else
 // {
 //   // go to pages login
 //   header('Location: dang-nhap.php');
 // }
+=======
+}
+else
+{
+  // go to pages login
+  header('Location: dang-nhap.php');
+}
+>>>>>>> 33f8f5f16ae9560ae1d68741d648b47281d6c1e0
 
 ?> 
