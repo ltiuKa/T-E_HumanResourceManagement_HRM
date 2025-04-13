@@ -5,75 +5,75 @@
 // create session
 session_start();
 
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
-//   // include file
-//   include('../layouts/header.php');
-//   include('../layouts/topbar.php');
-//   include('../layouts/sidebar.php');
+if(isset($_SESSION['username']) && isset($_SESSION['level']))
+{
+  // include file
+  include('../layouts/header.php');
+  include('../layouts/topbar.php');
+  include('../layouts/sidebar.php');
 
-//   if(isset($_POST['edit']))
-//   {
-//     $id = $_POST['idRoom'];
-//     echo "<script>location.href='sua-chuc-vu.php?p=staff&a=position&id=".$id."'</script>";
-//   }
+  if(isset($_POST['edit']))
+  {
+    $id = $_POST['idRoom'];
+    echo "<script>location.href='sua-chuc-vu.php?p=staff&a=position&id=".$id."'</script>";
+  }
 
-//   // show data
-//   $showData = "SELECT id, ma_chuc_vu, ten_chuc_vu, luong_ngay, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua FROM chuc_vu ORDER BY ngay_tao DESC";
-//   $result = mysqli_query($conn, $showData);
-//   $arrShow = array();
-//   while ($row = mysqli_fetch_array($result)) {
-//     $arrShow[] = $row;
-//   }
+  // show data
+  $showData = "SELECT id, ma_chuc_vu, ten_chuc_vu, luong_ngay, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua FROM chuc_vu ORDER BY ngay_tao DESC";
+  $result = mysqli_query($conn, $showData);
+  $arrShow = array();
+  while ($row = mysqli_fetch_array($result)) {
+    $arrShow[] = $row;
+  }
 
-//   // create code room
-//   $positionCode = "MCV" . time();
+  // create code room
+  $positionCode = "MCV" . time();
 
-//   // delete record
-//   if(isset($_POST['save']))
-//   {
-//     // create array error
-//     $error = array();
-//     $success = array();
-//     $showMess = false;
+  // delete record
+  if(isset($_POST['save']))
+  {
+    // create array error
+    $error = array();
+    $success = array();
+    $showMess = false;
 
-//     // get id in form
-//     $titlePosition = $_POST['titlePosition'];
-//     $salary = $_POST['salary'];
-//     $description = $_POST['description'];
-//     $personCreate = $_POST['personCreate'];
-//     $dateCreate = date("Y-m-d H:i:s");
-//     $personEdit = $_POST['personCreate'];
-//     $dateEdit = date("Y-m-d H:i:s");
+    // get id in form
+    $titlePosition = $_POST['titlePosition'];
+    $salary = $_POST['salary'];
+    $description = $_POST['description'];
+    $personCreate = $_POST['personCreate'];
+    $dateCreate = date("Y-m-d H:i:s");
+    $personEdit = $_POST['personCreate'];
+    $dateEdit = date("Y-m-d H:i:s");
 
-//     // validate
-//     if(empty($titlePosition))
-//       $error['titlePosition'] = 'Vui lòng nhập <b> tên chức vụ </b>';
+    // validate
+    if(empty($titlePosition))
+      $error['titlePosition'] = 'Vui lòng nhập <b> tên chức vụ </b>';
 
-//     if(!$error)
-//     {
-//       $showMess = true;
-//       $insert = "INSERT INTO chuc_vu(ma_chuc_vu, ten_chuc_vu, luong_ngay, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua) VALUES('$positionCode','$titlePosition', '$salary', '$description', '$personCreate', '$dateCreate', '$personEdit', '$dateEdit')";
-//       mysqli_query($conn, $insert);
-//       $success['success'] = 'Thêm chức vụ thành công';
-//       echo '<script>setTimeout("window.location=\'chuc-vu.php?p=staff&a=position\'",1000);</script>';
-//     }
+    if(!$error)
+    {
+      $showMess = true;
+      $insert = "INSERT INTO chuc_vu(ma_chuc_vu, ten_chuc_vu, luong_ngay, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua) VALUES('$positionCode','$titlePosition', '$salary', '$description', '$personCreate', '$dateCreate', '$personEdit', '$dateEdit')";
+      mysqli_query($conn, $insert);
+      $success['success'] = 'Thêm chức vụ thành công';
+      echo '<script>setTimeout("window.location=\'chuc-vu.php?p=staff&a=position\'",1000);</script>';
+    }
 
-//   }
+  }
 
-//   // delete record
-//   if(isset($_POST['delete']))
-//   {
-//     $showMess = true;
+  // delete record
+  if(isset($_POST['delete']))
+  {
+    $showMess = true;
 
-//     $id = $_POST['idPosition'];
-//     $delete = "DELETE FROM chuc_vu WHERE id = $id";
-//     mysqli_query($conn, $delete);
-//     $success['success'] = 'Xóa chức vụ thành công.';
-//     echo '<script>setTimeout("window.location=\'chuc-vu.php?p=staff&a=position\'",1000);</script>';
-//   }
+    $id = $_POST['idPosition'];
+    $delete = "DELETE FROM chuc_vu WHERE id = $id";
+    mysqli_query($conn, $delete);
+    $success['success'] = 'Xóa chức vụ thành công.';
+    echo '<script>setTimeout("window.location=\'chuc-vu.php?p=staff&a=position\'",1000);</script>';
+  }
 
-// ?>
+?>
 
 <!-- UI -->
   <!-- Modal -->
@@ -304,11 +304,11 @@ session_start();
 <?php
   // include
   include('../layouts/footer.php');
-// }
-// else
-// {
-//   // go to pages login
-//   header('Location: dang-nhap.php');
-// }
+}
+else
+{
+  // go to pages login
+  header('Location: dang-nhap.php');
+}
 
 ?> 
