@@ -1,8 +1,5 @@
 <!-- <?php 
 
-
-// BE
-// create session
 session_start();
 
 // if(isset($_SESSION['username']) && isset($_SESSION['level']))
