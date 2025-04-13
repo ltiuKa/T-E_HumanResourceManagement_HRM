@@ -1,78 +1,77 @@
 <?php 
-// BE
 // create session
-// session_start();
+session_start();
 
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
-//   // include file
-//   include('../layouts/header.php');
-//   include('../layouts/topbar.php');
-//   include('../layouts/sidebar.php');
+if(isset($_SESSION['username']) && isset($_SESSION['level']))
+{
+  // include file
+  include('../layouts/header.php');
+  include('../layouts/topbar.php');
+  include('../layouts/sidebar.php');
 
-//   // show data
-//   $NV = "SELECT id, ma_nv, ten_nv FROM nhanvien";
-//   $resultNV = mysqli_query($conn, $NV);
-//   $arrNV = array();
-//   while ($rowNV = mysqli_fetch_array($resultNV)) {
-//     $arrNV[] = $rowNV;
-//   }
+  // show data
+  $NV = "SELECT id, ma_nv, ten_nv FROM nhanvien";
+  $resultNV = mysqli_query($conn, $NV);
+  $arrNV = array();
+  while ($rowNV = mysqli_fetch_array($resultNV)) {
+    $arrNV[] = $rowNV;
+  }
 
-//   // create code room
-//   $maCongTac = "MCT" . time();
+  // create code room
+  $maCongTac = "MCT" . time();
 
-//   // delete record
-//   if(isset($_POST['save']))
-//   {
-//     // create array error
-//     $error = array();
-//     $success = array();
-//     $showMess = false;
+  // delete record
+  if(isset($_POST['save']))
+  {
+    // create array error
+    $error = array();
+    $success = array();
+    $showMess = false;
 
-//     // get id in form
-//     $maNhanVien = $_POST['maNhanVien'];
-//     $ngayBatDau = $_POST['ngayBatDau'];
-//     $ngayKetThuc = $_POST['ngayKetThuc'];
-//     $diaDiem = $_POST['diaDiem'];
-//     $mucDich = $_POST['mucDich'];
-//     $ghiChu = $_POST['ghiChu'];
-//     $nguoiTao = $_POST['nguoiTao'];
-//     $ngayTao = date("Y-m-d H:i:s");
+    // get id in form
+    $maNhanVien = $_POST['maNhanVien'];
+    $ngayBatDau = $_POST['ngayBatDau'];
+    $ngayKetThuc = $_POST['ngayKetThuc'];
+    $diaDiem = $_POST['diaDiem'];
+    $mucDich = $_POST['mucDich'];
+    $ghiChu = $_POST['ghiChu'];
+    $nguoiTao = $_POST['nguoiTao'];
+    $ngayTao = date("Y-m-d H:i:s");
 
-//     // validate
-//     if($maNhanVien == 'chon')
-//       $error['maNhanVien'] = 'error';
-//     if(empty($ngayKetThuc))
-//       $error['ngayKetThuc'] = 'error';
-//     if(!empty($ngayKetThuc) && ($ngayBatDau > $ngayKetThuc))
-//       $error['loiNgay'] = 'error';
-//     if(empty($diaDiem))
-//       $error['diaDiem'] = 'error';
+    // validate
+    if($maNhanVien == 'chon')
+      $error['maNhanVien'] = 'error';
+    if(empty($ngayKetThuc))
+      $error['ngayKetThuc'] = 'error';
+    if(!empty($ngayKetThuc) && ($ngayBatDau > $ngayKetThuc))
+      $error['loiNgay'] = 'error';
+    if(empty($diaDiem))
+      $error['diaDiem'] = 'error';
 
-//     // kiem tra nhan vien co dang trong qua trinh cong tac
-//     $check = "SELECT nhanvien_id FROM cong_tac WHERE nhanvien_id = '$maNhanVien'";
-//     $resultCheck = mysqli_query($conn, $check);
-//     if(mysqli_num_rows($resultCheck) != 0)
-//     {
-//       $error['dangCongTac'] = 'error';
-//       echo "<script>alert('Nhân viên này đang trong quá trình công tác');</script>";
-//     }
+    // kiem tra nhan vien co dang trong qua trinh cong tac
+    $check = "SELECT nhanvien_id FROM cong_tac WHERE nhanvien_id = '$maNhanVien'";
+    $resultCheck = mysqli_query($conn, $check);
+    if(mysqli_num_rows($resultCheck) != 0)
+    {
+      $error['dangCongTac'] = 'error';
+      echo "<script>alert('Nhân viên này đang trong quá trình công tác');</script>";
+    }
 
 
-//     if(!$error)
-//     {
-//       $showMess = true;
-//       $insert = "INSERT INTO cong_tac(ma_cong_tac, nhanvien_id, ngay_bat_dau, ngay_ket_thuc, dia_diem, muc_dich, ghi_chu, nguoi_tao, ngay_tao) VALUES('$maCongTac','$maNhanVien', '$ngayBatDau', '$ngayKetThuc', '$diaDiem', '$mucDich', '$ghiChu', '$nguoiTao', '$ngayTao')";
-//       $result = mysqli_query($conn, $insert);
-//       if($result)
-//       {
-//         $success['success'] = 'Thêm công tác thành công';
-//         echo '<script>setTimeout("window.location=\'cong-tac.php?p=collaborate&a=add-collaborate\'",1000);</script>';
-//       }
-//     }
-//   }
+    if(!$error)
+    {
+      $showMess = true;
+      $insert = "INSERT INTO cong_tac(ma_cong_tac, nhanvien_id, ngay_bat_dau, ngay_ket_thuc, dia_diem, muc_dich, ghi_chu, nguoi_tao, ngay_tao) VALUES('$maCongTac','$maNhanVien', '$ngayBatDau', '$ngayKetThuc', '$diaDiem', '$mucDich', '$ghiChu', '$nguoiTao', '$ngayTao')";
+      $result = mysqli_query($conn, $insert);
+      if($result)
+      {
+        $success['success'] = 'Thêm công tác thành công';
+        echo '<script>setTimeout("window.location=\'cong-tac.php?p=collaborate&a=add-collaborate\'",1000);</script>';
+      }
+    }
+  }
 
-// ?>
+?>
 
 <!-- UI -->
   <!-- Content Wrapper. Contains page content -->
@@ -201,16 +200,16 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-  </div> -->
+  </div> 
 
 <?php
-  // include
-//   include('../layouts/footer.php');
-// }
-// else
-// {
-//   // go to pages login
-//   header('Location: dang-nhap.php');
-// }
+  include
+  include('../layouts/footer.php');
+}
+else
+{
+  // go to pages login
+  header('Location: dang-nhap.php');
+}
 
 ?>
