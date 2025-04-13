@@ -1,10 +1,9 @@
-<!-- <?php 
+<?php
 
 // create session
-// session_start();
+session_start();
 
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
+if (isset($_SESSION['username']) && isset($_SESSION['level'])) {
   // include file
   include('../layouts/header.php');
   include('../layouts/topbar.php');
@@ -14,8 +13,7 @@
   $maNhom = "GRP" . time();
 
   // delete record
-  if(isset($_POST['save']))
-  {
+  if (isset($_POST['save'])) {
     // create array error
     $error = array();
     $success = array();
@@ -29,22 +27,19 @@
     $ngayTao = date("Y-m-d H:i:s");
 
     // validate
-    if(empty($tenNhom))
+    if (empty($tenNhom))
       $error['tenNhom'] = 'Vui lòng nhập <b> tên nhóm </b>';
 
-    if(!$error)
-    {
+    if (!$error) {
       $showMess = true;
       // them vao db
       $insert = "INSERT INTO nhom(ma_nhom, ten_nhom, mo_ta, nguoi_tao, ngay_tao) VALUES('$maNhom', '$tenNhom', '$moTa', '$nguoiTao', '$ngayTao')";
       $result = mysqli_query($conn, $insert);
-      if($result)
-      {
+      if ($result) {
         $success['success'] = 'Tạo nhóm nhân viên thành công.';
         echo '<script>setTimeout("window.location=\'tao-nhom.php?p=group&a=add-group\'",1000);</script>';
       }
     }
-
   }
 ?>
   <!-- Modal -->
@@ -69,7 +64,7 @@
         </form>
       </div>
     </div>
-  </div> 
+  </div>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -99,49 +94,42 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <?php 
-                // show error
-                if($row_acc['quyen'] != 1) 
-                {
-                  echo "<div class='alert alert-warning alert-dismissible'>";
-                  echo "<h4><i class='icon fa fa-ban'></i> Thông báo!</h4>";
-                  echo "Bạn <b> không có quyền </b> thực hiện chức năng này.";
-                  echo "</div>";
-                }
+              <?php
+              // show error
+              if ($row_acc['quyen'] != 1) {
+                echo "<div class='alert alert-warning alert-dismissible'>";
+                echo "<h4><i class='icon fa fa-ban'></i> Thông báo!</h4>";
+                echo "Bạn <b> không có quyền </b> thực hiện chức năng này.";
+                echo "</div>";
+              }
               ?>
 
-              <?php 
-                // show error
-                if(isset($error)) 
-                {
-                  if($showMess == false)
-                  {
-                    echo "<div class='alert alert-danger alert-dismissible'>";
-                    echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
-                    echo "<h4><i class='icon fa fa-ban'></i> Lỗi!</h4>";
-                    foreach ($error as $err) 
-                    {
-                      echo $err . "<br/>";
-                    }
-                    echo "</div>";
+              <?php
+              // show error
+              if (isset($error)) {
+                if ($showMess == false) {
+                  echo "<div class='alert alert-danger alert-dismissible'>";
+                  echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
+                  echo "<h4><i class='icon fa fa-ban'></i> Lỗi!</h4>";
+                  foreach ($error as $err) {
+                    echo $err . "<br/>";
                   }
+                  echo "</div>";
                 }
+              }
               ?>
-              <?php 
-                // show success
-                if(isset($success)) 
-                {
-                  if($showMess == true)
-                  {
-                    echo "<div class='alert alert-success alert-dismissible'>";
-                    echo "<h4><i class='icon fa fa-check'></i> Thành công!</h4>";
-                    foreach ($success as $suc) 
-                    {
-                      echo $suc . "<br/>";
-                    }
-                    echo "</div>";
+              <?php
+              // show success
+              if (isset($success)) {
+                if ($showMess == true) {
+                  echo "<div class='alert alert-success alert-dismissible'>";
+                  echo "<h4><i class='icon fa fa-check'></i> Thành công!</h4>";
+                  foreach ($success as $suc) {
+                    echo $suc . "<br/>";
                   }
+                  echo "</div>";
                 }
+              }
               ?>
               <form action="" method="POST">
                 <div class="row">
@@ -161,16 +149,18 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Người tạo: </label>
-                      <input type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $row_acc['ho']; echo " "; echo $row_acc['ten']; ?>" name="nguoiTao" readonly>
+                      <input type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $row_acc['ho'];
+                                                                                              echo " ";
+                                                                                              echo $row_acc['ten']; ?>" name="nguoiTao" readonly>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Ngày tạo: </label>
                       <input type="text" class="form-control" id="exampleInputEmail1" value="<?php echo date('d-m-Y H:i:s'); ?>" name="ngayTao" readonly>
                     </div>
                     <!-- /.form-group -->
-                    <?php 
-                      if($_SESSION['level'] == 1)
-                        echo "<button type='submit' class='btn btn-primary' name='save'><i class='fa fa-plus'></i> Tạo nhóm nhân viên</button>";
+                    <?php
+                    if ($_SESSION['level'] == 1)
+                      echo "<button type='submit' class='btn btn-primary' name='save'><i class='fa fa-plus'></i> Tạo nhóm nhân viên</button>";
                     ?>
                   </div>
                   <!-- /.col -->
@@ -191,12 +181,10 @@
 
 <?php
   // include
-//   include('../layouts/footer.php');
-// }
-// else
-// {
-//   // go to pages login
-//   header('Location: dang-nhap.php');
-// }
+  include('../layouts/footer.php');
+} else {
+  // go to pages login
+  header('Location: dang-nhap.php');
+}
 
-?> -->
+?>
