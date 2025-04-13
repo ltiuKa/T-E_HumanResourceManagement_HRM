@@ -507,5 +507,5 @@ else
   // go to pages login
   header('Location: dang-nhap.php');
 }
-
+// 
 ?> 
