@@ -1,4 +1,4 @@
-<!-- <?php 
+<?php 
   
   // connect database
   require_once('../config.php');
@@ -70,4 +70,4 @@
     .example-modal .modal {
       background: transparent !important;
     }
-  </style> -->
+  </style>

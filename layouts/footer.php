@@ -1,4 +1,4 @@
-﻿<!-- 
+﻿
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
@@ -188,4 +188,4 @@
 
 </script>
 </body>
-</html> -->
+</html>

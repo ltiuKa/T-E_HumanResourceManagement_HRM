@@ -1,4 +1,4 @@
-<!-- 
+
 <?php 
     
     // get active sidebar
@@ -223,4 +223,4 @@
       </ul>
     </section>
     <!-- /.sidebar -->
-  </aside> -->
+  </aside>
