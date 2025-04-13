@@ -1,6 +1,6 @@
 <?php 
 
-//create session
+// create session
 session_start();
 
 if(isset($_SESSION['username']) && isset($_SESSION['level']))
@@ -212,11 +212,11 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
 <?php
   // include
   include('../layouts/footer.php');
-}
+ }
 else
 {
   // go to pages login
   header('Location: dang-nhap.php');
 }
 
-?>
+?> 
