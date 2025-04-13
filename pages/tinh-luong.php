@@ -1,8 +1,8 @@
 <!-- <?php 
-//phuc ngo
+//phuc ngo them giao dien chi tiet
 // create session
 // session_start();
-
+//sua tinh toan cho anh thang vao hom nay
 // if(isset($_SESSION['username']) && isset($_SESSION['level']))
 // {
   // include file
