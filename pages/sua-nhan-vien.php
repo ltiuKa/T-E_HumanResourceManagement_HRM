@@ -1,4 +1,4 @@
-<!-- <?php 
+<?php 
 
 // create session
 // session_start();
@@ -622,4 +622,4 @@
 //   header('Location: dang-nhap.php');
 // }
 
-?> -->
+?>
