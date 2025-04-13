@@ -1,162 +1,162 @@
  <?php 
 
 // create session
-// session_start();
+session_start();
 
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
-//   // include file
-//   include('../layouts/header.php');
-//   include('../layouts/topbar.php');
-//   include('../layouts/sidebar.php');
+if(isset($_SESSION['username']) && isset($_SESSION['level']))
+{
+  // include file
+  include('../layouts/header.php');
+  include('../layouts/topbar.php');
+  include('../layouts/sidebar.php');
 
-//   if(isset($_POST['suaLoai']))
-//   {
-//     $id = $_POST['idLoai'];
-//     echo "<script>location.href='sua-loai-ky-luat.php?p=bonus-discipline&a=discipline&id=".$id."'</script>";
-//   }
+  if(isset($_POST['suaLoai']))
+  {
+    $id = $_POST['idLoai'];
+    echo "<script>location.href='sua-loai-ky-luat.php?p=bonus-discipline&a=discipline&id=".$id."'</script>";
+  }
 
-//   if(isset($_POST['suaKyLuat']))
-//   {
-//     $id = $_POST['idKyLuat'];
-//     echo "<script>location.href='sua-ky-luat.php?p=bonus-discipline&a=discipline&id=".$id."'</script>";
-//   }
+  if(isset($_POST['suaKyLuat']))
+  {
+    $id = $_POST['idKyLuat'];
+    echo "<script>location.href='sua-ky-luat.php?p=bonus-discipline&a=discipline&id=".$id."'</script>";
+  }
 
-//   // hien thi loai kỷ luật
-//   $showData = "SELECT id, ma_loai, ten_loai, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua FROM loai_khen_thuong_ky_luat WHERE flag = 0 ORDER BY ngay_tao DESC";
-//   $result = mysqli_query($conn, $showData);
-//   $arrShow = array();
-//   while ($row = mysqli_fetch_array($result)) {
-//     $arrShow[] = $row;
-//   }
+  // hien thi loai kỷ luật
+  $showData = "SELECT id, ma_loai, ten_loai, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua FROM loai_khen_thuong_ky_luat WHERE flag = 0 ORDER BY ngay_tao DESC";
+  $result = mysqli_query($conn, $showData);
+  $arrShow = array();
+  while ($row = mysqli_fetch_array($result)) {
+    $arrShow[] = $row;
+  }
 
-//   // hien thi ky luat
-//   $kt = "SELECT ktkl.id as id, ma_kt, ten_khen_thuong, ten_nv, so_qd, ngay_qd, ten_loai, hinh_thuc, so_tien, ktkl.ngay_tao as ngay_tao FROM khen_thuong_ky_luat ktkl, nhanvien nv, loai_khen_thuong_ky_luat lktkl WHERE ktkl.nhanvien_id = nv.id AND ktkl.loai_kt_id = lktkl.id AND ktkl.flag = 0 ORDER BY ktkl.ngay_tao DESC";
-//   $resultKT = mysqli_query($conn, $kt);
-//   $arrKT = array();
-//   while ($rowKT = mysqli_fetch_array($resultKT)) {
-//     $arrKT[] = $rowKT;
-//   }
+  // hien thi ky luat
+  $kt = "SELECT ktkl.id as id, ma_kt, ten_khen_thuong, ten_nv, so_qd, ngay_qd, ten_loai, hinh_thuc, so_tien, ktkl.ngay_tao as ngay_tao FROM khen_thuong_ky_luat ktkl, nhanvien nv, loai_khen_thuong_ky_luat lktkl WHERE ktkl.nhanvien_id = nv.id AND ktkl.loai_kt_id = lktkl.id AND ktkl.flag = 0 ORDER BY ktkl.ngay_tao DESC";
+  $resultKT = mysqli_query($conn, $kt);
+  $arrKT = array();
+  while ($rowKT = mysqli_fetch_array($resultKT)) {
+    $arrKT[] = $rowKT;
+  }
 
-//   // hien thi nhan vien
-//   $nv = "SELECT id, ma_nv, ten_nv FROM nhanvien ORDER BY id DESC";
-//   $resultNV = mysqli_query($conn, $nv);
-//   $arrNV = array();
-//   while ($rowNV = mysqli_fetch_array($resultNV)) {
-//     $arrNV[] = $rowNV;
-//   }
+  // hien thi nhan vien
+  $nv = "SELECT id, ma_nv, ten_nv FROM nhanvien ORDER BY id DESC";
+  $resultNV = mysqli_query($conn, $nv);
+  $arrNV = array();
+  while ($rowNV = mysqli_fetch_array($resultNV)) {
+    $arrNV[] = $rowNV;
+  }
 
-//   // create code 
-//   $maLoai = "LKL" . time();
-//   $maKyLuat = "MKL" . time();
+  // create code 
+  $maLoai = "LKL" . time();
+  $maKyLuat = "MKL" . time();
 
-//   // them loai khen thuong
-//   if(isset($_POST['taoLoai']))
-//   {
-//     // create array error
-//     $error = array();
-//     $success = array();
-//     $showMess = false;
+  // them loai khen thuong
+  if(isset($_POST['taoLoai']))
+  {
+    // create array error
+    $error = array();
+    $success = array();
+    $showMess = false;
 
-//     // get id in form
-//     $tenLoai = $_POST['tenLoai'];
-//     $moTa = $_POST['moTa'];
-//     $flag = 0;
-//     $nguoiTao = $_POST['nguoiTao'];
-//     $ngayTao = date("Y-m-d H:i:s");
+    // get id in form
+    $tenLoai = $_POST['tenLoai'];
+    $moTa = $_POST['moTa'];
+    $flag = 0;
+    $nguoiTao = $_POST['nguoiTao'];
+    $ngayTao = date("Y-m-d H:i:s");
 
-//     // validate
-//     if(empty($tenLoai))
-//       $error['tenLoai'] = 'Vui lòng nhập <b> tên loại </b>';
+    // validate
+    if(empty($tenLoai))
+      $error['tenLoai'] = 'Vui lòng nhập <b> tên loại </b>';
 
-//     if(!$error)
-//     {
-//       $showMess = true;
-//       $insert = "INSERT INTO loai_khen_thuong_ky_luat(ma_loai, ten_loai, ghi_chu, flag, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua) VALUES('$maLoai','$tenLoai','$moTa', '$flag', '$nguoiTao', '$ngayTao', '$nguoiTao', '$ngayTao')";
-//       $result = mysqli_query($conn, $insert);
-//       if($result)
-//       {
-//         $success['success'] = 'Tạo loại kỷ luật thành công';
-//         echo '<script>setTimeout("window.location=\'ky-luat.php?p=bonus-discipline&a=discipline&tao-loai\'",1000);</script>';
-//       }
-//     }
-//   }
+    if(!$error)
+    {
+      $showMess = true;
+      $insert = "INSERT INTO loai_khen_thuong_ky_luat(ma_loai, ten_loai, ghi_chu, flag, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua) VALUES('$maLoai','$tenLoai','$moTa', '$flag', '$nguoiTao', '$ngayTao', '$nguoiTao', '$ngayTao')";
+      $result = mysqli_query($conn, $insert);
+      if($result)
+      {
+        $success['success'] = 'Tạo loại kỷ luật thành công';
+        echo '<script>setTimeout("window.location=\'ky-luat.php?p=bonus-discipline&a=discipline&tao-loai\'",1000);</script>';
+      }
+    }
+  }
 
-//   // them khen thuong
-//   if(isset($_POST['taoKyLuat']))
-//   {
-//     // create array error
-//     $error = array();
-//     $success = array();
-//     $showMess = false;
+  // them khen thuong
+  if(isset($_POST['taoKyLuat']))
+  {
+    // create array error
+    $error = array();
+    $success = array();
+    $showMess = false;
 
-//     // get id in form
-//     $soQuyetDinh = $_POST['soQuyetDinh'];
-//     $ngayQuyetDinh = $_POST['ngayQuyetDinh'];
-//     $tenKyLuat = $_POST['tenKyLuat'];
-//     $nhanVien = $_POST['nhanVien'];
-//     $loaiKyLuat= $_POST['loaiKyLuat'];
-//     $hinhThuc = $_POST['hinhThuc'];
-//     $soTienPhat = $_POST['soTienPhat'];
-//     $moTa = $_POST['moTa'];
-//     $nguoiTao = $_POST['nguoiTao'];
-//     $ngayTao = date("Y-m-d H:i:s");
-//     $flag = 0;
+    // get id in form
+    $soQuyetDinh = $_POST['soQuyetDinh'];
+    $ngayQuyetDinh = $_POST['ngayQuyetDinh'];
+    $tenKyLuat = $_POST['tenKyLuat'];
+    $nhanVien = $_POST['nhanVien'];
+    $loaiKyLuat= $_POST['loaiKyLuat'];
+    $hinhThuc = $_POST['hinhThuc'];
+    $soTienPhat = $_POST['soTienPhat'];
+    $moTa = $_POST['moTa'];
+    $nguoiTao = $_POST['nguoiTao'];
+    $ngayTao = date("Y-m-d H:i:s");
+    $flag = 0;
 
 
-//     // validate
-//     if(empty($soQuyetDinh))
-//       $error['soQuyetDinh'] = 'Vui lòng nhập <b> số quyết định </b>';
-//     if($nhanVien == 'chon')
-//       $error['nhanVien'] = 'Vui lòng chọn <b> nhân viên </b>';
-//     if($loaiKhenThuong == 'chon')
-//       $error['loaiKyLuat'] = 'Vui lòng chọn <b> loại kỷ luật </b>';
-//     if($hinhThuc == 'chon')
-//       $error['hinhThuc'] = 'Vui lòng chọn <b> hình thức </b>';
-//     if(empty($soTienPhat))
-//       $error['soTienPhat'] = 'Vui lòng nhập <b> số tiền phạt </b>';
+    // validate
+    if(empty($soQuyetDinh))
+      $error['soQuyetDinh'] = 'Vui lòng nhập <b> số quyết định </b>';
+    if($nhanVien == 'chon')
+      $error['nhanVien'] = 'Vui lòng chọn <b> nhân viên </b>';
+    if($loaiKhenThuong == 'chon')
+      $error['loaiKyLuat'] = 'Vui lòng chọn <b> loại kỷ luật </b>';
+    if($hinhThuc == 'chon')
+      $error['hinhThuc'] = 'Vui lòng chọn <b> hình thức </b>';
+    if(empty($soTienPhat))
+      $error['soTienPhat'] = 'Vui lòng nhập <b> số tiền phạt </b>';
 
-//     if(!$error)
-//     {
-//       $showMess = true;
-//       $insert = "INSERT INTO khen_thuong_ky_luat(ma_kt, so_qd, ngay_qd, nhanvien_id, ten_khen_thuong, loai_kt_id, hinh_thuc, so_tien, flag, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua) VALUES('$maKyLuat', '$soQuyetDinh', '$ngayQuyetDinh', '$nhanVien', '$tenKyLuat', '$loaiKyLuat', '$hinhThuc', '$soTienPhat', '$flag', '$moTa', '$nguoiTao', '$ngayTao', '$nguoiTao', '$ngayTao')";
-//       $result = mysqli_query($conn, $insert);
-//       if($result)
-//       {
-//         $success['success'] = 'Kỷ luật thành công';
-//         echo '<script>setTimeout("window.location=\'ky-luat.php?p=bonus-discipline&a=discipline&ky-luat\'",1000);</script>';
-//       }
-//     }
-//   }
+    if(!$error)
+    {
+      $showMess = true;
+      $insert = "INSERT INTO khen_thuong_ky_luat(ma_kt, so_qd, ngay_qd, nhanvien_id, ten_khen_thuong, loai_kt_id, hinh_thuc, so_tien, flag, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua) VALUES('$maKyLuat', '$soQuyetDinh', '$ngayQuyetDinh', '$nhanVien', '$tenKyLuat', '$loaiKyLuat', '$hinhThuc', '$soTienPhat', '$flag', '$moTa', '$nguoiTao', '$ngayTao', '$nguoiTao', '$ngayTao')";
+      $result = mysqli_query($conn, $insert);
+      if($result)
+      {
+        $success['success'] = 'Kỷ luật thành công';
+        echo '<script>setTimeout("window.location=\'ky-luat.php?p=bonus-discipline&a=discipline&ky-luat\'",1000);</script>';
+      }
+    }
+  }
 
-//   // delete record
-//   if(isset($_POST['delete']))
-//   {
-//     $showMess = true;
-//     $id = $_POST['id'];
+  // delete record
+  if(isset($_POST['delete']))
+  {
+    $showMess = true;
+    $id = $_POST['id'];
 
-//     // chon xoa bang nao?
-//     $table = substr($id, 0, 3);
+    // chon xoa bang nao?
+    $table = substr($id, 0, 3);
 
-//     // neu xoa loai khen thuong
-//     if($table == 'LKL')
-//     {
-//       $delete = "DELETE FROM loai_khen_thuong_ky_luat WHERE ma_loai = '$id'";
-//       mysqli_query($conn, $delete);
-//       $success['success'] = 'Xóa loại kỷ luật thành công.';
-//       echo '<script>setTimeout("window.location=\'ky-luat.php?p=bonus-discipline&a=discipline&tao-loai\'",1000);</script>';
-//     }
+    // neu xoa loai khen thuong
+    if($table == 'LKL')
+    {
+      $delete = "DELETE FROM loai_khen_thuong_ky_luat WHERE ma_loai = '$id'";
+      mysqli_query($conn, $delete);
+      $success['success'] = 'Xóa loại kỷ luật thành công.';
+      echo '<script>setTimeout("window.location=\'ky-luat.php?p=bonus-discipline&a=discipline&tao-loai\'",1000);</script>';
+    }
     
-//     // neu xoa khen thuong
-//     if($table == 'MKL')
-//     {
-//       $delete = "DELETE FROM khen_thuong_ky_luat WHERE ma_kt = '$id'";
-//       mysqli_query($conn, $delete);
-//       $success['success'] = 'Xóa kỷ luật thành công.';
-//       echo '<script>setTimeout("window.location=\'ky-luat.php?p=bonus-discipline&a=discipline&ky-luat\'",1000);</script>';
-//     }
+    // neu xoa khen thuong
+    if($table == 'MKL')
+    {
+      $delete = "DELETE FROM khen_thuong_ky_luat WHERE ma_kt = '$id'";
+      mysqli_query($conn, $delete);
+      $success['success'] = 'Xóa kỷ luật thành công.';
+      echo '<script>setTimeout("window.location=\'ky-luat.php?p=bonus-discipline&a=discipline&ky-luat\'",1000);</script>';
+    }
 
-//   }
+  }
 
 ?>
   <!-- Modal -->
@@ -701,12 +701,12 @@
 
 <?php
   // include
-//   include('../layouts/footer.php');
-// }
-// else
-// {
-//   // go to pages login
-//   header('Location: dang-nhap.php');
-// }
+  include('../layouts/footer.php');
+}
+else
+{
+  // go to pages login
+  header('Location: dang-nhap.php');
+}
 
 ?>
