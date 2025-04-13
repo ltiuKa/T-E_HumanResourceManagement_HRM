@@ -3,12 +3,12 @@
 // create session
 // session_start();
 
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
-//   // include file
-//   include('../layouts/header.php');
-//   include('../layouts/topbar.php');
-//   include('../layouts/sidebar.php');
+if(isset($_SESSION['username']) && isset($_SESSION['level']))
+{
+  // include file
+  include('../layouts/header.php');
+  include('../layouts/topbar.php');
+  include('../layouts/sidebar.php');
 
 
 //   // show data
@@ -182,12 +182,12 @@
 
 <?php
   // include
-//   include('../layouts/footer.php');
-// }
-// else
-// {
-//   // go to pages login
-//   header('Location: dang-nhap.php');
-// }
+  include('../layouts/footer.php');
+}
+else
+{
+  // go to pages login
+  header('Location: dang-nhap.php');
+}
 
 ?> -->
