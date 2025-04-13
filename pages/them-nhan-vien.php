@@ -1,4 +1,4 @@
-<!-- <?php 
+<?php 
 
 // create session
 // session_start();
@@ -220,8 +220,7 @@
 
 ?>
 
-  <!-- Content Wrapper. Contains page content -->
-  <!-- <div class="content-wrapper">
+   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -497,11 +496,11 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-  </div> -->
+  </div> 
 
 <?php
-  // include
-//   include('../layouts/footer.php');
+  include
+  include('../layouts/footer.php');
 // }
 // else
 // {
@@ -509,4 +508,4 @@
 //   header('Location: dang-nhap.php');
 // }
 
-?> -->
+?> 
