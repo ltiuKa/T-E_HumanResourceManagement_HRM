@@ -3,57 +3,57 @@
 // create session
 // session_start();
 
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
-//   // include file
-//   include('../layouts/header.php');
-//   include('../layouts/topbar.php');
-//   include('../layouts/sidebar.php');
+if(isset($_SESSION['username']) && isset($_SESSION['level']))
+{
+  // include file
+  include('../layouts/header.php');
+  include('../layouts/topbar.php');
+  include('../layouts/sidebar.php');
 
-//   if(isset($_GET['id']))
-//   {
-//     $id = $_GET['id'];
-//     // show data
-//     $showData = "SELECT id, ma_chuyen_mon, ten_chuyen_mon, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua FROM chuyen_mon WHERE id = $id ORDER BY ngay_tao DESC";
-//     $result = mysqli_query($conn, $showData);
-//     $arrShow = array();
-//     $row = mysqli_fetch_array($result);
-//   }
+  if(isset($_GET['id']))
+  {
+    $id = $_GET['id'];
+    // show data
+    $showData = "SELECT id, ma_chuyen_mon, ten_chuyen_mon, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua FROM chuyen_mon WHERE id = $id ORDER BY ngay_tao DESC";
+    $result = mysqli_query($conn, $showData);
+    $arrShow = array();
+    $row = mysqli_fetch_array($result);
+  }
 
 
-//   // delete record
-//   if(isset($_POST['save']))
-//   {
-//     // create array error
-//     $error = array();
-//     $success = array();
-//     $showMess = false;
+  // delete record
+  if(isset($_POST['save']))
+  {
+    // create array error
+    $error = array();
+    $success = array();
+    $showMess = false;
 
-//     // get id in form
-//     $titleSpecial = $_POST['titleSpecial'];
-//     $description = $_POST['description'];
-//     $personEdit = $_POST['personCreate'];
-//     $dateEdit = date("Y-m-d H:i:s");
+    // get id in form
+    $titleSpecial = $_POST['titleSpecial'];
+    $description = $_POST['description'];
+    $personEdit = $_POST['personCreate'];
+    $dateEdit = date("Y-m-d H:i:s");
 
-//     // validate
-//     if(empty($titleSpecial))
-//       $error['titleSpecial'] = 'Vui lòng nhập <b> tên chuyên môn </b>';
+    // validate
+    if(empty($titleSpecial))
+      $error['titleSpecial'] = 'Vui lòng nhập <b> tên chuyên môn </b>';
 
-//     if(!$error)
-//     {
-//       $showMess = true;
-//       $update = " UPDATE chuyen_mon SET 
-//                   ten_chuyen_mon = '$titleSpecial',
-//                   ghi_chu = '$description',
-//                   nguoi_sua = '$personEdit',
-//                   ngay_sua = '$dateEdit'
-//                   WHERE id = $id";
-//       mysqli_query($conn, $update);
-//       $success['success'] = 'Lưu lại thành công';
-//       echo '<script>setTimeout("window.location=\'sua-chuyen-mon.php?p=staff&a=specialize&id='.$id.'\'",1000);</script>';
-//     }
+    if(!$error)
+    {
+      $showMess = true;
+      $update = " UPDATE chuyen_mon SET 
+                  ten_chuyen_mon = '$titleSpecial',
+                  ghi_chu = '$description',
+                  nguoi_sua = '$personEdit',
+                  ngay_sua = '$dateEdit'
+                  WHERE id = $id";
+      mysqli_query($conn, $update);
+      $success['success'] = 'Lưu lại thành công';
+      echo '<script>setTimeout("window.location=\'sua-chuyen-mon.php?p=staff&a=specialize&id='.$id.'\'",1000);</script>';
+    }
 
-//   }
+  }
 
 ?>
 
@@ -179,12 +179,12 @@
 
 <?php
   // include
-//   include('../layouts/footer.php');
-// }
-// else
-// {
-//   // go to pages login
-//   header('Location: dang-nhap.php');
-// }
+  include('../layouts/footer.php');
+}
+else
+{
+  // go to pages login
+  header('Location: dang-nhap.php');
+}
 
 ?> -->
