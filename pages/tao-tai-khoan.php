@@ -116,8 +116,8 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
 
 ?>
   <!-- Content Wrapper. Contains page content -->
-  <!-- <div class="content-wrapper">
-    Content Header (Page header) -->
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Tài khoản
@@ -129,7 +129,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
       </ol>
     </section>
 
-    <!-- Main content -->
+  
      <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -264,7 +264,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
   <!-- /.content-wrapper -->
 
 <?php
-//   // include
+  // include
   include('../layouts/footer.php');
 }
 else
