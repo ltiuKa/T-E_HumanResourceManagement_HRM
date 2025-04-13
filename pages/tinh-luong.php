@@ -2,7 +2,7 @@
 //phuc ngo them giao dien chi tiet
 // create session
 // session_start();
-
+//sua tinh toan
 // if(isset($_SESSION['username']) && isset($_SESSION['level']))
 // {
   // include file
