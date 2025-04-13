@@ -53,7 +53,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['level'])) {
 
 ?>
 
-  <!-- UI -->
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -283,7 +282,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['level'])) {
   </div>
 
 <?php
-  // include
+  // include  // include // include
   include('../layouts/footer.php');
 } else {
   // go to pages login
