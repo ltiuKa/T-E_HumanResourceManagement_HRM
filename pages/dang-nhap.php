@@ -1,86 +1,85 @@
 <?php 
 
 
-// BE
-// // create session
-// session_start();
 
-// // connect database
-// include('../config.php');
+// create session
+session_start();
 
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
-// 	header("Location: index.php");
-// }
-// else
-// {
+// connect database
+include('../config.php');
 
-// 	if(isset($_POST['login']))
-// 	{
-// 		// array error
-// 		$error = array();
-// 		// array success
-// 		$success = array();
-// 		// showMess
-// 		$showMess = false;
+if(isset($_SESSION['username']) && isset($_SESSION['level']))
+{
+	header("Location: index.php");
+}
+else
+{
 
-// 		// validate form 
-// 		if(empty($_POST['email']))
-// 		{
-// 			$error['email'] = 'Bạn chưa nhập <b> email </b>';
-// 		}
+	if(isset($_POST['login']))
+	{
+		// array error
+		$error = array();
+		// array success
+		$success = array();
+		// showMess
+		$showMess = false;
 
-// 		if(empty($_POST['password']))
-// 		{
-// 			$error['password'] = 'Bạn chưa nhập <b> mật khẩu </b>';
-// 		}
+		// validate form 
+		if(empty($_POST['email']))
+		{
+			$error['email'] = 'Bạn chưa nhập <b> email </b>';
+		}
 
-// 		if(!$error)
-// 		{	
+		if(empty($_POST['password']))
+		{
+			$error['password'] = 'Bạn chưa nhập <b> mật khẩu </b>';
+		}
+
+		if(!$error)
+		{	
 			
-// 			$email = $_POST['email'];
-// 			$password = md5($_POST['password']);
+			$email = $_POST['email'];
+			$password = md5($_POST['password']);
 
-// 			// check user
-// 			$check = "SELECT email, mat_khau, quyen, truy_cap FROM tai_khoan WHERE email = '$email'";
-// 			$result = mysqli_query($conn, $check);
-// 			$row = mysqli_fetch_array($result);
-// 			$level = $row['quyen'];
+			// check user
+			$check = "SELECT email, mat_khau, quyen, truy_cap FROM tai_khoan WHERE email = '$email'";
+			$result = mysqli_query($conn, $check);
+			$row = mysqli_fetch_array($result);
+			$level = $row['quyen'];
 
-// 			if(mysqli_num_rows($result) == 1)
-// 			{
-// 				if($row['mat_khau'] == $password)
-// 				{
-// 					$showMess = true;
-// 					// create var session username
-// 					$_SESSION['username'] = $email;
-// 					// create var session level
-// 					$_SESSION['level'] = $level;
+			if(mysqli_num_rows($result) == 1)
+			{
+				if($row['mat_khau'] == $password)
+				{
+					$showMess = true;
+					// create var session username
+					$_SESSION['username'] = $email;
+					// create var session level
+					$_SESSION['level'] = $level;
 
-//           // set access
-//           $access = $row['truy_cap'] + 1;
-//           $update = "UPDATE tai_khoan SET truy_cap = $access WHERE email = '$email'";
-//           mysqli_query($conn, $update); 
+          // set access
+          $access = $row['truy_cap'] + 1;
+          $update = "UPDATE tai_khoan SET truy_cap = $access WHERE email = '$email'";
+          mysqli_query($conn, $update); 
 
-// 					$success['mess'] = 'Đăng nhập thành công';
-// 					header("Refresh: 1; index.php?p=index&a=statistic");
-// 				}
-// 				else
-// 				{
-// 					$error['check'] = 'Nhập sai <b> mật khẩu </b>. Vui lòng thử lại';
-// 				}
-// 			}
-// 			else
-// 			{
-// 				$error['check'] = 'Nhập sai <b> email </b>. Vui lòng thử lại';
-// 			}
-// 		}
-// 	}
+					$success['mess'] = 'Đăng nhập thành công';
+					header("Refresh: 1; index.php?p=index&a=statistic");
+				}
+				else
+				{
+					$error['check'] = 'Nhập sai <b> mật khẩu </b>. Vui lòng thử lại';
+				}
+			}
+			else
+			{
+				$error['check'] = 'Nhập sai <b> email </b>. Vui lòng thử lại';
+			}
+		}
+	}
 
-// ?>
+?>
 
-<!-- UI -->
-<!-- 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -161,6 +160,6 @@
 </html>
 
 <?php 
-// } 
-// end check session
-?>-->
+ } 
+//  end check session
+?>
