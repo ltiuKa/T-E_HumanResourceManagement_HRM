@@ -10,7 +10,6 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
   include('../layouts/topbar.php');
   include('../layouts/sidebar.php');
 
-
   // save
   if(isset($_POST['save']))
   {
@@ -55,7 +54,6 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
       echo '<script>setTimeout("window.location=\'doi-mat-khau.php?p=account&a=changepass\'",1000);</script>';
     }
   }
-
 ?>
 
   <!-- Content Wrapper. Contains page content -->
