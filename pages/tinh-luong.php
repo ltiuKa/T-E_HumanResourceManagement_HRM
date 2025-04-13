@@ -1,5 +1,5 @@
 <!-- <?php 
-//phuc ngo them giao dien
+//phuc ngo them giao dien chi tiet
 // create session
 // session_start();
 
