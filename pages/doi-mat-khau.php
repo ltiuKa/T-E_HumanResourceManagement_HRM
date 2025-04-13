@@ -1,60 +1,59 @@
-<!-- <?php 
+<?php 
 
 // create session
-// session_start();
+session_start();
 
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
-//   // include file
-//   include('../layouts/header.php');
-//   include('../layouts/topbar.php');
-//   include('../layouts/sidebar.php');
+if(isset($_SESSION['username']) && isset($_SESSION['level']))
+{
+  // include file
+  include('../layouts/header.php');
+  include('../layouts/topbar.php');
+  include('../layouts/sidebar.php');
 
-//   // save
-//   if(isset($_POST['save']))
-//   {
-//     // create error array
-//     $error = array();
-//     $success = array();
-//     $showMess = false;
+  // save
+  if(isset($_POST['save']))
+  {
+    // create error array
+    $error = array();
+    $success = array();
+    $showMess = false;
 
-//     // get value
-//     $email = $row_acc['email'];
-//     $oldPass = md5($_POST['oldPass']);
-//     $newPass = md5($_POST['newPass']);
-//     $reNewPass = md5($_POST['reNewPass']);
+    // get value
+    $email = $row_acc['email'];
+    $oldPass = md5($_POST['oldPass']);
+    $newPass = md5($_POST['newPass']);
+    $reNewPass = md5($_POST['reNewPass']);
 
-//     // validate
-//     if(empty($_POST['oldPass']))
-//       $error['oldPass'] = 'Vui lòng nhập <b> mật khẩu cũ </b>';
+    // validate
+    if(empty($_POST['oldPass']))
+      $error['oldPass'] = 'Vui lòng nhập <b> mật khẩu cũ </b>';
 
-//     if(empty($_POST['newPass']))
-//       $error['newPass'] = 'Vui lòng nhập <b> mật khẩu mới </b>';
+    if(empty($_POST['newPass']))
+      $error['newPass'] = 'Vui lòng nhập <b> mật khẩu mới </b>';
 
-//     if(empty($_POST['reNewPass']))
-//       $error['reNewPass'] = 'Vui lòng nhập lại <b> mật khẩu mới </b>';
+    if(empty($_POST['reNewPass']))
+      $error['reNewPass'] = 'Vui lòng nhập lại <b> mật khẩu mới </b>';
 
-//     if(!empty($_POST['oldPass']) && $oldPass != $row_acc['mat_khau'])
-//       $error['errorPass'] = 'Mật khẩu cũ <b> không đúng </b>. Vui lòng thử lại!';
+    if(!empty($_POST['oldPass']) && $oldPass != $row_acc['mat_khau'])
+      $error['errorPass'] = 'Mật khẩu cũ <b> không đúng </b>. Vui lòng thử lại!';
 
-//     if($newPass != $reNewPass)
-//       $error['checkNotSame'] = 'Mật khẩu mới không <b> trùng nhau </b>. Vui lòng thử lại!';
+    if($newPass != $reNewPass)
+      $error['checkNotSame'] = 'Mật khẩu mới không <b> trùng nhau </b>. Vui lòng thử lại!';
 
 
-//     // save to db
-//     if(!$error)
-//     {
-//       $showMess = true;
-//       // update record
-//       $update = " UPDATE tai_khoan SET
-//                   mat_khau = '$newPass'
-//                   WHERE email = '$email'";   
-//       mysqli_query($conn, $update);
-//       $success['success'] = 'Thay đổi mật khẩu mới thành công.';
-//       echo '<script>setTimeout("window.location=\'doi-mat-khau.php?p=account&a=changepass\'",1000);</script>';
-//     }
-//   }
-
+    // save to db
+    if(!$error)
+    {
+      $showMess = true;
+      // update record
+      $update = " UPDATE tai_khoan SET
+                  mat_khau = '$newPass'
+                  WHERE email = '$email'";   
+      mysqli_query($conn, $update);
+      $success['success'] = 'Thay đổi mật khẩu mới thành công.';
+      echo '<script>setTimeout("window.location=\'doi-mat-khau.php?p=account&a=changepass\'",1000);</script>';
+    }
+  }
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -211,11 +210,11 @@
 <?php
   // include
   include('../layouts/footer.php');
-// }
-// else
-// {
-//   // go to pages login
-//   header('Location: dang-nhap.php');
-// }
+ }
+else
+{
+  // go to pages login
+  header('Location: dang-nhap.php');
+}
 
-?> -->
+?> 
