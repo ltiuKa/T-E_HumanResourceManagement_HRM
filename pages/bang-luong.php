@@ -1,4 +1,5 @@
 <!-- <?php 
+//phuc ngo bang luong
 // Backend
 // create session
 // session_start();
