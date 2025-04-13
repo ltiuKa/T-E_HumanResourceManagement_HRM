@@ -10,7 +10,6 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
   include('../layouts/topbar.php');
   include('../layouts/sidebar.php');
 
-
   // save
   if(isset($_POST['save']))
   {
@@ -269,7 +268,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
 }
 else
 {
-  // go to pages login
+//   // go to pages login
   header('Location: dang-nhap.php');
 }
 
