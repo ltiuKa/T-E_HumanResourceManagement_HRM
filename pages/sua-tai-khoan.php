@@ -1,4 +1,4 @@
-<!-- <?php 
+ <?php 
 
 // create session
 // session_start();
@@ -125,7 +125,7 @@
 ?>
   <!-- Content Wrapper. Contains page content -->
   <!-- <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+   Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Tài khoản
@@ -292,7 +292,7 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-  </div> -->
+  </div> 
   <!-- /.content-wrapper -->
 
 <?php
@@ -305,4 +305,4 @@
 //   header('Location: dang-nhap.php');
 // }
 
-?> -->
+?> 
