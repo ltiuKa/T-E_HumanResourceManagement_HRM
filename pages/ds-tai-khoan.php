@@ -1,66 +1,66 @@
-<!-- <?php 
+ <?php 
 
 // create session
-// session_start();
+session_start();
 
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
-//   // include file
-//   include('../layouts/header.php');
-//   include('../layouts/topbar.php');
-//   include('../layouts/sidebar.php');
+if(isset($_SESSION['username']) && isset($_SESSION['level']))
+{
+  // include file
+  include('../layouts/header.php');
+  include('../layouts/topbar.php');
+  include('../layouts/sidebar.php');
 
-//   if(isset($_POST['edit']))
-//   {
-//     $id = $_POST['idAccount'];
-//     echo "<script>location.href='sua-tai-khoan.php?p=account&a=list-account&id=".$id."'</script>";
-//   }
+  if(isset($_POST['edit']))
+  {
+    $id = $_POST['idAccount'];
+    echo "<script>location.href='sua-tai-khoan.php?p=account&a=list-account&id=".$id."'</script>";
+  }
 
-//   // show data
-//   $showData = "SELECT * FROM tai_khoan WHERE id <> 1 ORDER BY ngay_tao DESC";
-//   $result = mysqli_query($conn, $showData);
-//   $arrShow = array();
-//   while ($row = mysqli_fetch_array($result)) {
-//     $arrShow[] = $row;
-//   }
+  // show data
+  $showData = "SELECT * FROM tai_khoan WHERE id <> 1 ORDER BY ngay_tao DESC";
+  $result = mysqli_query($conn, $showData);
+  $arrShow = array();
+  while ($row = mysqli_fetch_array($result)) {
+    $arrShow[] = $row;
+  }
 
-//   // delete record
-//   if(isset($_POST['delete']))
-//   {
-//     // create array error
-//     $error = array();
-//     $success = array();
-//     $showMess = false;
+  // delete record
+  if(isset($_POST['delete']))
+  {
+    // create array error
+    $error = array();
+    $success = array();
+    $showMess = false;
 
-//     // get id in form
-//     $id = $_POST['idAccount'];
-//     //$error['test'] = $id;
+    // get id in form
+    $id = $_POST['idAccount'];
+    //$error['test'] = $id;
 
-//     // check account using then cannot delete
-//     if($id == $row_acc['id'])
-//       $error['accUsing'] = 'Tài khoản <b> đang sử dụng </b>! Bạn không thể xóa tài khoản.';
+    // check account using then cannot delete
+    if($id == $row_acc['id'])
+      $error['accUsing'] = 'Tài khoản <b> đang sử dụng </b>! Bạn không thể xóa tài khoản.';
 
-//     if(!$error)
-//     {
-//       $showMess = true;
+    if(!$error)
+    {
+      $showMess = true;
 
-//       // remove image
-//       $dir = '../uploads/images/';
-//       $getImage = "SELECT hinh_anh FROM tai_khoan WHERE id = $id";
-//       $rs_getImage = mysqli_query($conn, $getImage);
-//       $row_getImage = mysqli_fetch_array($rs_getImage);
-//       $image = $row_getImage['hinh_anh'];
-//       if($image != 'admin.png')
-//         unlink($dir . $image);
+      // remove image
+      $dir = '../uploads/images/';
+      $getImage = "SELECT hinh_anh FROM tai_khoan WHERE id = $id";
+      $rs_getImage = mysqli_query($conn, $getImage);
+      $row_getImage = mysqli_fetch_array($rs_getImage);
+      $image = $row_getImage['hinh_anh'];
+      if($image != 'admin.png')
+        unlink($dir . $image);
 
-//       // remove record
-//       $delRecord = "DELETE FROM tai_khoan WHERE id = $id";
-//       mysqli_query($conn, $delRecord);
-//       $success['success'] = 'Xóa tài khoản thành công.';
-//         echo '<script>setTimeout("window.location=\'ds-tai-khoan.php?p=account&a=list-account\'",1000);</script>';
-//     }
+      // remove record
+      $delRecord = "DELETE FROM tai_khoan WHERE id = $id";
+      mysqli_query($conn, $delRecord);
+      $success['success'] = 'Xóa tài khoản thành công.';
+        echo '<script>setTimeout("window.location=\'ds-tai-khoan.php?p=account&a=list-account\'",1000);</script>';
+    }
 
-//   }
+  }
 
 ?>
 
@@ -69,7 +69,7 @@
 
 <!-- ui -->
   <!-- Modal -->
-  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <form method="POST">
@@ -90,11 +90,11 @@
         </form>
       </div>
     </div>
-  </div> -->
+  </div>
 
   <!-- Content Wrapper. Contains page content -->
   <!-- <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+     Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Tài khoản
@@ -250,16 +250,16 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-  </div> -->
+  </div> 
 
 <?php
   // include
   include('../layouts/footer.php');
-// }
-// else
-// {
-//   // go to pages login
-//   header('Location: dang-nhap.php');
-// }
+}
+else
+{
+  // go to pages login
+  header('Location: dang-nhap.php');
+}
 
-?> -->
+?> 
