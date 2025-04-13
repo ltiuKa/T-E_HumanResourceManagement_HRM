@@ -1,10 +1,10 @@
-<!-- <?php 
-//phuc ngo them giao dien chi tiet
+<?php 
+// phuc ngo them giao dien chi tiet
 // create session
-// session_start();
-//sua tinh toan cho anh thang vao hom nay
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
+session_start();
+// sua tinh toan cho anh thang vao hom nay
+if(isset($_SESSION['username']) && isset($_SESSION['level']))
+{
   // include file
   include('../layouts/header.php');
   include('../layouts/topbar.php');
@@ -119,7 +119,7 @@
 
 ?>
   <!-- Content Wrapper. Contains page content -->
-  <!-- <div class="content-wrapper">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -271,15 +271,15 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-  </div> -->
+  </div>
 <?php
   // include
-//   include('../layouts/footer.php');
-// }
-// else
-// {
-//   // go to pages login
-//   header('Location: dang-nhap.php');
-// }
+  include('../layouts/footer.php');
+}
+else
+{
+  // go to pages login
+  header('Location: dang-nhap.php');
+}
 
-?> -->
+?>

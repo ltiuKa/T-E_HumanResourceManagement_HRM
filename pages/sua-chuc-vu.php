@@ -1,68 +1,67 @@
-<!-- <?php 
+<?php
 
 // create session
-// session_start();
+session_start();
 
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
-//   // include file
-//   include('../layouts/header.php');
-//   include('../layouts/topbar.php');
-//   include('../layouts/sidebar.php');
+if (isset($_SESSION['username']) && isset($_SESSION['level'])) {
+  //   // include file
+  //   include('../layouts/header.php');
+  //   include('../layouts/topbar.php');
+  //   include('../layouts/sidebar.php');
 
-//   // show data
-//   if(isset($_GET['id']))
-//   {
-//     $id = $_GET['id'];
-//     $showData = "SELECT id, ma_chuc_vu, ten_chuc_vu, luong_ngay, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua FROM chuc_vu WHERE id = $id ORDER BY ngay_tao DESC";
-//     $result = mysqli_query($conn, $showData);
-//     $arrShow = array();
-//     $row = mysqli_fetch_array($result);
-//   }
+  //   // show data
+  //   if(isset($_GET['id']))
+  //   {
+  //     $id = $_GET['id'];
+  //     $showData = "SELECT id, ma_chuc_vu, ten_chuc_vu, luong_ngay, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua FROM chuc_vu WHERE id = $id ORDER BY ngay_tao DESC";
+  //     $result = mysqli_query($conn, $showData);
+  //     $arrShow = array();
+  //     $row = mysqli_fetch_array($result);
+  //   }
 
-//   // delete record
-//   if(isset($_POST['save']))
-//   {
-//     // create array error
-//     $error = array();
-//     $success = array();
-//     $showMess = false;
+  //   // delete record
+  //   if(isset($_POST['save']))
+  //   {
+  //     // create array error
+  //     $error = array();
+  //     $success = array();
+  //     $showMess = false;
 
-//     // get id in form
-//     $titlePosition = $_POST['titlePosition'];
-//     $salary = $_POST['salary'];
-//     $description = $_POST['description'];
-//     $personCreate = $_POST['personCreate'];
-//     $dateCreate = date("Y-m-d H:i:s");
-//     $personEdit = $_POST['personCreate'];
-//     $dateEdit = date("Y-m-d H:i:s");
+  //     // get id in form
+  //     $titlePosition = $_POST['titlePosition'];
+  //     $salary = $_POST['salary'];
+  //     $description = $_POST['description'];
+  //     $personCreate = $_POST['personCreate'];
+  //     $dateCreate = date("Y-m-d H:i:s");
+  //     $personEdit = $_POST['personCreate'];
+  //     $dateEdit = date("Y-m-d H:i:s");
 
-//     // validate
-//     if(empty($titlePosition))
-//       $error['titlePosition'] = 'Vui lòng nhập <b> tên chức vụ </b>';
+  //     // validate
+  //     if(empty($titlePosition))
+  //       $error['titlePosition'] = 'Vui lòng nhập <b> tên chức vụ </b>';
 
-//     if(!$error)
-//     {
-//       $showMess = true;
-//       $update = " UPDATE chuc_vu SET 
-//                   ten_chuc_vu = '$titlePosition',
-//                   luong_ngay = '$salary',
-//                   ghi_chu = '$description',
-//                   nguoi_sua = '$personEdit',
-//                   ngay_sua = '$dateEdit'
-//                   WHERE id = $id";
-//       mysqli_query($conn, $update);
-//       $success['success'] = 'Lưu lại thành công';
-//       echo '<script>setTimeout("window.location=\'sua-chuc-vu.php?p=staff&a=position&id='.
-//       $id.'\'",1000);</script>';
-//     }
+  //     if(!$error)
+  //     {
+  //       $showMess = true;
+  //       $update = " UPDATE chuc_vu SET 
+  //                   ten_chuc_vu = '$titlePosition',
+  //                   luong_ngay = '$salary',
+  //                   ghi_chu = '$description',
+  //                   nguoi_sua = '$personEdit',
+  //                   ngay_sua = '$dateEdit'
+  //                   WHERE id = $id";
+  //       mysqli_query($conn, $update);
+  //       $success['success'] = 'Lưu lại thành công';
+  //       echo '<script>setTimeout("window.location=\'sua-chuc-vu.php?p=staff&a=position&id='.
+  //       $id.'\'",1000);</script>';
+  //     }
 
-//   }
+  //   }
 
 ?>
-  
+
   <!-- Content Wrapper. Contains page content -->
-  <!-- <div class="content-wrapper">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -89,49 +88,42 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <?php 
-                // show error
-                if($row_acc['quyen'] != 1) 
-                {
-                  echo "<div class='alert alert-warning alert-dismissible'>";
-                  echo "<h4><i class='icon fa fa-ban'></i> Thông báo!</h4>";
-                  echo "Bạn <b> không có quyền </b> thực hiện chức năng này.";
-                  echo "</div>";
-                }
+              <?php
+              // show error
+              if ($row_acc['quyen'] != 1) {
+                echo "<div class='alert alert-warning alert-dismissible'>";
+                echo "<h4><i class='icon fa fa-ban'></i> Thông báo!</h4>";
+                echo "Bạn <b> không có quyền </b> thực hiện chức năng này.";
+                echo "</div>";
+              }
               ?>
 
-              <?php 
-                // show error
-                if(isset($error)) 
-                {
-                  if($showMess == false)
-                  {
-                    echo "<div class='alert alert-danger alert-dismissible'>";
-                    echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
-                    echo "<h4><i class='icon fa fa-ban'></i> Lỗi!</h4>";
-                    foreach ($error as $err) 
-                    {
-                      echo $err . "<br/>";
-                    }
-                    echo "</div>";
+              <?php
+              // show error
+              if (isset($error)) {
+                if ($showMess == false) {
+                  echo "<div class='alert alert-danger alert-dismissible'>";
+                  echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
+                  echo "<h4><i class='icon fa fa-ban'></i> Lỗi!</h4>";
+                  foreach ($error as $err) {
+                    echo $err . "<br/>";
                   }
+                  echo "</div>";
                 }
+              }
               ?>
-              <?php 
-                // show success
-                if(isset($success)) 
-                {
-                  if($showMess == true)
-                  {
-                    echo "<div class='alert alert-success alert-dismissible'>";
-                    echo "<h4><i class='icon fa fa-check'></i> Thành công!</h4>";
-                    foreach ($success as $suc) 
-                    {
-                      echo $suc . "<br/>";
-                    }
-                    echo "</div>";
+              <?php
+              // show success
+              if (isset($success)) {
+                if ($showMess == true) {
+                  echo "<div class='alert alert-success alert-dismissible'>";
+                  echo "<h4><i class='icon fa fa-check'></i> Thành công!</h4>";
+                  foreach ($success as $suc) {
+                    echo $suc . "<br/>";
                   }
+                  echo "</div>";
                 }
+              }
               ?>
               <form action="" method="POST">
                 <div class="row">
@@ -162,9 +154,9 @@
                       <input type="text" class="form-control" id="exampleInputEmail1" value="<?php echo date('d-m-Y H:i:s'); ?>" name="dateCreate" readonly>
                     </div>
                     <!-- /.form-group -->
-                    <?php 
-                      if($_SESSION['level'] == 1)
-                        echo "<button type='submit' class='btn btn-warning' name='save'><i class='fa fa-save'></i> Lưu lại</button>";
+                    <?php
+                    if ($_SESSION['level'] == 1)
+                      echo "<button type='submit' class='btn btn-warning' name='save'><i class='fa fa-save'></i> Lưu lại</button>";
                     ?>
                   </div>
                   <!-- /.col -->
@@ -181,16 +173,14 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-  </div> -->
+  </div>
 
 <?php
-  // include
-//   include('../layouts/footer.php');
-// }
-// else
-// {
-//   // go to pages login
-//   header('Location: dang-nhap.php');
-// }
+  include
+    include('../layouts/footer.php');
+} else {
+  // go to pages login
+  header('Location: dang-nhap.php');
+}
 
-?> -->
+?>

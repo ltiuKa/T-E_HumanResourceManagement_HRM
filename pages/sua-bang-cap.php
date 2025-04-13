@@ -1,7 +1,7 @@
-<!-- <?php 
+<?php 
 
 // create session
-// session_start();
+session_start();
 
 if(isset($_SESSION['username']) && isset($_SESSION['level']))
 {
@@ -190,4 +190,4 @@ else
   header('Location: dang-nhap.php');
 }
 
-?> -->
+?>

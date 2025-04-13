@@ -1,5 +1,5 @@
-<!-- <?php 
-	// Ka
+<?php 
+	
 	// PHPExcel
   	include('Classes/PHPExcel.php');
   	// connect database
@@ -146,4 +146,4 @@
   	readfile($filename);
   	return;
 
-?> -->
+?>

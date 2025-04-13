@@ -1,7 +1,5 @@
-<!-- <?php 
+<?php 
 
-
-// KA
 // create session
 session_start();
 
@@ -353,4 +351,4 @@ else
 	header('Location: dang-nhap.php');
 }
 
-?> -->
+?>

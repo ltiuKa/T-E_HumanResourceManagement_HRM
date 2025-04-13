@@ -1,73 +1,71 @@
-<!-- <?php 
+<?php
 
 // create session
-// session_start();
+session_start();
 
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
-//   // include file
-//   include('../layouts/header.php');
-//   include('../layouts/topbar.php');
-//   include('../layouts/sidebar.php');
+if (isset($_SESSION['username']) && isset($_SESSION['level'])) {
+  //   // include file
+  //   include('../layouts/header.php');
+  //   include('../layouts/topbar.php');
+  //   include('../layouts/sidebar.php');
 
-//   if(isset($_POST['edit']))
-//   {
-//     $id = $_POST['idAccount'];
-//     echo "<script>location.href='sua-tai-khoan.php?p=account&a=list-account&id=".$id."'</script>";
-//   }
+  //   if(isset($_POST['edit']))
+  //   {
+  //     $id = $_POST['idAccount'];
+  //     echo "<script>location.href='sua-tai-khoan.php?p=account&a=list-account&id=".$id."'</script>";
+  //   }
 
-//   // show data
-//   $showData = "SELECT * FROM tai_khoan WHERE id <> 1 ORDER BY ngay_tao DESC";
-//   $result = mysqli_query($conn, $showData);
-//   $arrShow = array();
-//   while ($row = mysqli_fetch_array($result)) {
-//     $arrShow[] = $row;
-//   }
+  //   // show data
+  //   $showData = "SELECT * FROM tai_khoan WHERE id <> 1 ORDER BY ngay_tao DESC";
+  //   $result = mysqli_query($conn, $showData);
+  //   $arrShow = array();
+  //   while ($row = mysqli_fetch_array($result)) {
+  //     $arrShow[] = $row;
+  //   }
 
-//   // delete record
-//   if(isset($_POST['delete']))
-//   {
-//     // create array error
-//     $error = array();
-//     $success = array();
-//     $showMess = false;
+  //   // delete record
+  //   if(isset($_POST['delete']))
+  //   {
+  //     // create array error
+  //     $error = array();
+  //     $success = array();
+  //     $showMess = false;
 
-//     // get id in form
-//     $id = $_POST['idAccount'];
-//     //$error['test'] = $id;
+  //     // get id in form
+  //     $id = $_POST['idAccount'];
+  //     //$error['test'] = $id;
 
-//     // check account using then cannot delete
-//     if($id == $row_acc['id'])
-//       $error['accUsing'] = 'Tài khoản <b> đang sử dụng </b>! Bạn không thể xóa tài khoản.';
+  //     // check account using then cannot delete
+  //     if($id == $row_acc['id'])
+  //       $error['accUsing'] = 'Tài khoản <b> đang sử dụng </b>! Bạn không thể xóa tài khoản.';
 
-//     if(!$error)
-//     {
-//       $showMess = true;
+  //     if(!$error)
+  //     {
+  //       $showMess = true;
 
-//       // remove image
-//       $dir = '../uploads/images/';
-//       $getImage = "SELECT hinh_anh FROM tai_khoan WHERE id = $id";
-//       $rs_getImage = mysqli_query($conn, $getImage);
-//       $row_getImage = mysqli_fetch_array($rs_getImage);
-//       $image = $row_getImage['hinh_anh'];
-//       if($image != 'admin.png')
-//         unlink($dir . $image);
+  //       // remove image
+  //       $dir = '../uploads/images/';
+  //       $getImage = "SELECT hinh_anh FROM tai_khoan WHERE id = $id";
+  //       $rs_getImage = mysqli_query($conn, $getImage);
+  //       $row_getImage = mysqli_fetch_array($rs_getImage);
+  //       $image = $row_getImage['hinh_anh'];
+  //       if($image != 'admin.png')
+  //         unlink($dir . $image);
 
-//       // remove record
-//       $delRecord = "DELETE FROM tai_khoan WHERE id = $id";
-//       mysqli_query($conn, $delRecord);
-//       $success['success'] = 'Xóa tài khoản thành công.';
-//         echo '<script>setTimeout("window.location=\'ds-tai-khoan.php?p=account&a=list-account\'",1000);</script>';
-//     }
+  //       // remove record
+  //       $delRecord = "DELETE FROM tai_khoan WHERE id = $id";
+  //       mysqli_query($conn, $delRecord);
+  //       $success['success'] = 'Xóa tài khoản thành công.';
+  //         echo '<script>setTimeout("window.location=\'ds-tai-khoan.php?p=account&a=list-account\'",1000);</script>';
+  //     }
 
-//   }
+  //   }
 
 ?>
 
 
-<!-- UI -->
   <!-- Modal -->
-  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <form method="POST">
@@ -88,10 +86,10 @@
         </form>
       </div>
     </div>
-  </div> -->
+  </div>
 
   <!-- Content Wrapper. Contains page content -->
-  <!-- <div class="content-wrapper">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -115,59 +113,52 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="table-responsive">
-              <?php 
+                <?php
                 // show error
-                if(isset($error)) 
-                {
-                  if($showMess == false)
-                  {
+                if (isset($error)) {
+                  if ($showMess == false) {
                     echo "<div class='alert alert-danger alert-dismissible'>";
                     echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
                     echo "<h4><i class='icon fa fa-ban'></i> Lỗi!</h4>";
-                    foreach ($error as $err) 
-                    {
+                    foreach ($error as $err) {
                       echo $err . "<br/>";
                     }
                     echo "</div>";
                   }
                 }
-              ?>
-              <?php 
+                ?>
+                <?php
                 // show success
-                if(isset($success)) 
-                {
-                  if($showMess == true)
-                  {
+                if (isset($success)) {
+                  if ($showMess == true) {
                     echo "<div class='alert alert-success alert-dismissible'>";
                     echo "<h4><i class='icon fa fa-check'></i> Thành công!</h4>";
-                    foreach ($success as $suc) 
-                    {
+                    foreach ($success as $suc) {
                       echo $suc . "<br/>";
                     }
                     echo "</div>";
                   }
                 }
-              ?>
+                ?>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
-                  <tr>
-                    <th>STT</th>
-                    <th>Ảnh</th>
-                    <th>Họ</th>
-                    <th>Tên</th>
-                    <th>Email</th>
-                    <th>Truy cập</th>
-                    <th>Điện thoại</th>
-                    <th>Quyền hạn</th>
-                    <th>Trạng thái</th>
-                  </tr>
+                    <tr>
+                      <th>STT</th>
+                      <th>Ảnh</th>
+                      <th>Họ</th>
+                      <th>Tên</th>
+                      <th>Email</th>
+                      <th>Truy cập</th>
+                      <th>Điện thoại</th>
+                      <th>Quyền hạn</th>
+                      <th>Trạng thái</th>
+                    </tr>
                   </thead>
                   <tbody>
-                  <?php 
+                    <?php
                     $count = 1;
-                    foreach ($arrShow as $arrS) 
-                    {
-                  ?>
+                    foreach ($arrShow as $arrS) {
+                    ?>
                       <tr>
                         <td><?php echo $count; ?></td>
                         <td><img src="../uploads/images/<?php echo $arrS['hinh_anh']; ?>" width="80"></td>
@@ -177,34 +168,28 @@
                         <td><?php echo number_format($arrS['truy_cap']); ?></td>
                         <td><?php echo $arrS['so_dt']; ?></td>
                         <th>
-                          <?php 
-                            if($arrS['quyen'] == 1)
-                            {
-                              echo "<span class='label label-primary'>Quản trị viên</span>";
-                            }
-                            else
-                            {
-                               echo "<span class='label label-info'>Nhân viên</span>";
-                            }
+                          <?php
+                          if ($arrS['quyen'] == 1) {
+                            echo "<span class='label label-primary'>Quản trị viên</span>";
+                          } else {
+                            echo "<span class='label label-info'>Nhân viên</span>";
+                          }
                           ?>
                         </th>
                         <th>
-                          <?php 
-                            if($arrS['trang_thai'] == 1)
-                            {
-                              echo "<span class='label label-success'>Đang hoạt động</span>";
-                            }
-                            else
-                            {
-                               echo "<span class='label label-danger'>Ngưng hoạt động</span>";
-                            }
+                          <?php
+                          if ($arrS['trang_thai'] == 1) {
+                            echo "<span class='label label-success'>Đang hoạt động</span>";
+                          } else {
+                            echo "<span class='label label-danger'>Ngưng hoạt động</span>";
+                          }
                           ?>
                         </th>
                       </tr>
-                  <?php
+                    <?php
                       $count++;
                     }
-                  ?>
+                    ?>
                   </tbody>
                 </table>
               </div>
@@ -218,16 +203,14 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-  </div> -->
+  </div>
 
 <?php
   // include
-//   include('../layouts/footer.php');
-// }
-// else
-// {
-//   // go to pages login
-//   header('Location: dang-nhap.php');
-// }
+  include('../layouts/footer.php');
+} else {
+  // go to pages login
+  header('Location: dang-nhap.php');
+}
 
-?> -->
+?>

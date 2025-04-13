@@ -56,7 +56,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
 
 ?>
   <!-- Content Wrapper. Contains page content -->
-  <!-- <div class="content-wrapper">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -171,7 +171,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
       <!-- /.row -->
     </section>
     <!-- /.content -->
-  </div> -->
+  </div>
 
 <?php
   // include
