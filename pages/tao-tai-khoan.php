@@ -1,15 +1,14 @@
 <?php 
 
 // create session
-session_start();
+// session_start();
 
-if(isset($_SESSION['username']) && isset($_SESSION['level']))
-{
+// if(isset($_SESSION['username']) && isset($_SESSION['level']))
+// {
   // include file
   include('../layouts/header.php');
   include('../layouts/topbar.php');
   include('../layouts/sidebar.php');
-
 
   // save
   if(isset($_POST['save']))
@@ -117,7 +116,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
 ?>
   <!-- Content Wrapper. Contains page content -->
   <!-- <div class="content-wrapper">
-    Content Header (Page header) -->
+    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Tài khoản
@@ -265,12 +264,12 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']))
 
 <?php
 //   // include
-  include('../layouts/footer.php');
-}
-else
-{
-  // go to pages login
-  header('Location: dang-nhap.php');
-}
+//   include('../layouts/footer.php');
+// }
+// else
+// {
+//   // go to pages login
+//   header('Location: dang-nhap.php');
+// }
 
 ?> 
