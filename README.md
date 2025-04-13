@@ -89,12 +89,17 @@ git push -u origin main
 ```
 git clone https://github.com/ltiuKa/T-E_HumanResourceManagement_HRM.git
 cd <ten-folder-du-an>
-git checkout main
+git checkout develop
 ```
 # II. CẤU HÌNH GIT (CHỈ CẦN 1 LẦN)
 ```
-git config --global user.name "Tên của bạn"
+git config --global user.name "Tên của bạn 4 số cuối mssv"
 git config --global user.email "email@example.com"
+
+ # kiểm tra thông tin
+echo "Name: $(git config user.name)"
+echo "Email: $(git config user.email)"
+echo "Remote: $(git remote get-url origin)"
 ```
 
 # III. QUY TRÌNH GIT FLOW (PO + MEMBER)
@@ -110,6 +115,12 @@ git push origin develop
 git checkout develop
 git pull origin develop
 git checkout -b feature/SCRUM-3 Giao diện đăng nhập
+```
+
+- Kiểm tra tất cả nhánh cả local lẫn remote
+```
+git branch
+git fetch --all # kiểm tra xem có nhanh nào ms chưa pull về
 ```
 
 ### 📘 Gợi ý tên branch:
