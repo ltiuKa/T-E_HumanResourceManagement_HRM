@@ -7,7 +7,6 @@
 /build
 /public/hot
 /public/storage
-/public
 
 # Upload directory
 /documentation/build
