@@ -6,6 +6,12 @@
 							"q6eozefo5y6pr4so", //username
 							"l5bx0kfzdy2wsa0d", //password
 							"usrwvkzhhhfj2drg"); //database
+	// cau hinh database: mysql -u q6eozefo5y6pr4so -p -h p2d0untihotgr5f6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
+	// password: l5bx0kfzdy2wsa0d
+	// "C:\Users\Karen\Downloads\quanly_nhansu.sql"
+
+	//database: usrwvkzhhhfj2drg
+
 
 	if (!$conn) {
 	    echo "Error: Unable to connect to MySQL." . PHP_EOL;
