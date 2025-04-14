@@ -3,8 +3,8 @@
 /bower_components
 
 # Build outputs
-/dist
-/build
+
+
 /public/hot
 /public/storage
 
