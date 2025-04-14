@@ -324,5 +324,5 @@ git commit -m "ABC-123: Thêm API tính lương
 - Comment PR và tag người review
 - Xoá branch khi xong
 - Update trạng thái task trên Jira
-
-mysql://q6eozefo5y6pr4so:l5bx0kfzdy2wsa0d@p2d0untihotgr5f6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/usrwvkzhhhfj2drg
+<!-- 
+mysql://q6eozefo5y6pr4so:l5bx0kfzdy2wsa0d@p2d0untihotgr5f6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/usrwvkzhhhfj2drg -->

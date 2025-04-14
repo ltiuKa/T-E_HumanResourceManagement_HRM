@@ -4,62 +4,62 @@
 session_start();
 
 if (isset($_SESSION['username']) && isset($_SESSION['level'])) {
-  //   // include file
-  //   include('../layouts/header.php');
-  //   include('../layouts/topbar.php');
-  //   include('../layouts/sidebar.php');
+    // include file
+    include('../layouts/header.php');
+    include('../layouts/topbar.php');
+    include('../layouts/sidebar.php');
 
-  //   if(isset($_POST['edit']))
-  //   {
-  //     $id = $_POST['idAccount'];
-  //     echo "<script>location.href='sua-tai-khoan.php?p=account&a=list-account&id=".$id."'</script>";
-  //   }
+    if(isset($_POST['edit']))
+    {
+      $id = $_POST['idAccount'];
+      echo "<script>location.href='sua-tai-khoan.php?p=account&a=list-account&id=".$id."'</script>";
+    }
 
-  //   // show data
-  //   $showData = "SELECT * FROM tai_khoan WHERE id <> 1 ORDER BY ngay_tao DESC";
-  //   $result = mysqli_query($conn, $showData);
-  //   $arrShow = array();
-  //   while ($row = mysqli_fetch_array($result)) {
-  //     $arrShow[] = $row;
-  //   }
+    // show data
+    $showData = "SELECT * FROM tai_khoan WHERE id <> 1 ORDER BY ngay_tao DESC";
+    $result = mysqli_query($conn, $showData);
+    $arrShow = array();
+    while ($row = mysqli_fetch_array($result)) {
+      $arrShow[] = $row;
+    }
 
-  //   // delete record
-  //   if(isset($_POST['delete']))
-  //   {
-  //     // create array error
-  //     $error = array();
-  //     $success = array();
-  //     $showMess = false;
+    // delete record
+    if(isset($_POST['delete']))
+    {
+      // create array error
+      $error = array();
+      $success = array();
+      $showMess = false;
 
-  //     // get id in form
-  //     $id = $_POST['idAccount'];
-  //     //$error['test'] = $id;
+      // get id in form
+      $id = $_POST['idAccount'];
+      //$error['test'] = $id;
 
-  //     // check account using then cannot delete
-  //     if($id == $row_acc['id'])
-  //       $error['accUsing'] = 'Tài khoản <b> đang sử dụng </b>! Bạn không thể xóa tài khoản.';
+      // check account using then cannot delete
+      if($id == $row_acc['id'])
+        $error['accUsing'] = 'Tài khoản <b> đang sử dụng </b>! Bạn không thể xóa tài khoản.';
 
-  //     if(!$error)
-  //     {
-  //       $showMess = true;
+      if(!$error)
+      {
+        $showMess = true;
 
-  //       // remove image
-  //       $dir = '../uploads/images/';
-  //       $getImage = "SELECT hinh_anh FROM tai_khoan WHERE id = $id";
-  //       $rs_getImage = mysqli_query($conn, $getImage);
-  //       $row_getImage = mysqli_fetch_array($rs_getImage);
-  //       $image = $row_getImage['hinh_anh'];
-  //       if($image != 'admin.png')
-  //         unlink($dir . $image);
+        // remove image
+        $dir = '../uploads/images/';
+        $getImage = "SELECT hinh_anh FROM tai_khoan WHERE id = $id";
+        $rs_getImage = mysqli_query($conn, $getImage);
+        $row_getImage = mysqli_fetch_array($rs_getImage);
+        $image = $row_getImage['hinh_anh'];
+        if($image != 'admin.png')
+          unlink($dir . $image);
 
-  //       // remove record
-  //       $delRecord = "DELETE FROM tai_khoan WHERE id = $id";
-  //       mysqli_query($conn, $delRecord);
-  //       $success['success'] = 'Xóa tài khoản thành công.';
-  //         echo '<script>setTimeout("window.location=\'ds-tai-khoan.php?p=account&a=list-account\'",1000);</script>';
-  //     }
+        // remove record
+        $delRecord = "DELETE FROM tai_khoan WHERE id = $id";
+        mysqli_query($conn, $delRecord);
+        $success['success'] = 'Xóa tài khoản thành công.';
+          echo '<script>setTimeout("window.location=\'ds-tai-khoan.php?p=account&a=list-account\'",1000);</script>';
+      }
 
-  //   }
+    }
 
 ?>
 
