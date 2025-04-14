@@ -1,15 +1,12 @@
 # Dependencies
 /node_modules
-/bower_components
+
 
 # Build outputs
 
 
-/public/hot
-/public/storage
-
 # Upload directory
-/documentation/build
+
 
 # Storage and cache
 /storage/*.key
