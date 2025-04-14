@@ -1,86 +1,86 @@
-<!-- <?php 
+ <?php 
 
 // create session
-// session_start();
+session_start();
 
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
-//   // include file
-//   include('../layouts/header.php');
-//   include('../layouts/topbar.php');
-//   include('../layouts/sidebar.php');
+if(isset($_SESSION['username']) && isset($_SESSION['level']))
+{
+  // include file
+  include('../layouts/header.php');
+  include('../layouts/topbar.php');
+  include('../layouts/sidebar.php');
 
-//   if(isset($_POST['edit']))
-//   {
-//     $id = $_POST['idType'];
-//     echo "<script>location.href='sua-loai-nhan-vien.php?p=staff&a=employee-type&id=".$id."'</script>";
-//   }
+  if(isset($_POST['edit']))
+  {
+    $id = $_POST['idType'];
+    echo "<script>location.href='sua-loai-nhan-vien.php?p=staff&a=employee-type&id=".$id."'</script>";
+  }
 
-//   // show data
-//   $showData = "SELECT id, ma_loai_nv, ten_loai_nv, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua FROM loai_nv ORDER BY ngay_tao DESC";
-//   $result = mysqli_query($conn, $showData);
-//   $arrShow = array();
-//   while ($row = mysqli_fetch_array($result)) {
-//     $arrShow[] = $row;
-//   }
+  // show data
+  $showData = "SELECT id, ma_loai_nv, ten_loai_nv, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua FROM loai_nv ORDER BY ngay_tao DESC";
+  $result = mysqli_query($conn, $showData);
+  $arrShow = array();
+  while ($row = mysqli_fetch_array($result)) {
+    $arrShow[] = $row;
+  }
 
-//   // create code room
-//   $typeCode = "LNV" . time();
+  // create code room
+  $typeCode = "LNV" . time();
 
-//   // delete record
-//   if(isset($_POST['save']))
-//   {
-//     // create array error
-//     $error = array();
-//     $success = array();
-//     $showMess = false;
+  // delete record
+  if(isset($_POST['save']))
+  {
+    // create array error
+    $error = array();
+    $success = array();
+    $showMess = false;
 
-//     // get id in form
-//     $typeName = $_POST['typeName'];
-//     $description = $_POST['description'];
-//     $personCreate = $_POST['personCreate'];
-//     $dateCreate = date("Y-m-d H:i:s");
-//     $personEdit = $_POST['personCreate'];
-//     $dateEdit = date("Y-m-d H:i:s");
+    // get id in form
+    $typeName = $_POST['typeName'];
+    $description = $_POST['description'];
+    $personCreate = $_POST['personCreate'];
+    $dateCreate = date("Y-m-d H:i:s");
+    $personEdit = $_POST['personCreate'];
+    $dateEdit = date("Y-m-d H:i:s");
 
-//     // validate
-//     if(empty($typeName))
-//       $error['typeName'] = 'Vui lòng nhập <b> loại nhân viên </b>';
+    // validate
+    if(empty($typeName))
+      $error['typeName'] = 'Vui lòng nhập <b> loại nhân viên </b>';
 
-//     if(!$error)
-//     {
-//       $showMess = true;
-//       $insert = "INSERT INTO loai_nv(ma_loai_nv, ten_loai_nv, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua) VALUES('$typeCode','$typeName', '$description', '$personCreate', '$dateCreate', '$personEdit', '$dateEdit')";
-//       $result = mysqli_query($conn, $insert);
-//       if($result)
-//       {
-//         $success['success'] = 'Tạo loại nhân viên thành công';
-//         echo '<script>setTimeout("window.location=\'loai-nhan-vien.php?p=staff&a=employee-type\'",1000);</script>';
-//       }
-//     }
-//   }
+    if(!$error)
+    {
+      $showMess = true;
+      $insert = "INSERT INTO loai_nv(ma_loai_nv, ten_loai_nv, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua) VALUES('$typeCode','$typeName', '$description', '$personCreate', '$dateCreate', '$personEdit', '$dateEdit')";
+      $result = mysqli_query($conn, $insert);
+      if($result)
+      {
+        $success['success'] = 'Tạo loại nhân viên thành công';
+        echo '<script>setTimeout("window.location=\'loai-nhan-vien.php?p=staff&a=employee-type\'",1000);</script>';
+      }
+    }
+  }
 
-//   // delete record
-//   if(isset($_POST['delete']))
-//   {
-//     $showMess = true;
+  // delete record
+  if(isset($_POST['delete']))
+  {
+    $showMess = true;
 
-//     $id = $_POST['idType'];
-//     $delete = "DELETE FROM loai_nv WHERE id = $id";
-//     $result = mysqli_query($conn, $delete);
-//     if($result)
-//     {
-//       $success['success'] = 'Xóa loại nhân viên thành công.';
-//       echo '<script>setTimeout("window.location=\'loai-nhan-vien.php?p=staff&a=employee-type\'",1000);</script>';
-//     }
-//   }
+    $id = $_POST['idType'];
+    $delete = "DELETE FROM loai_nv WHERE id = $id";
+    $result = mysqli_query($conn, $delete);
+    if($result)
+    {
+      $success['success'] = 'Xóa loại nhân viên thành công.';
+      echo '<script>setTimeout("window.location=\'loai-nhan-vien.php?p=staff&a=employee-type\'",1000);</script>';
+    }
+  }
 
 ?>
 
 
 
   <!-- Modal -->
-  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <form method="POST">
@@ -101,11 +101,11 @@
         </form>
       </div>
     </div>
-  </div> -->
+  </div> 
 
   <!-- Content Wrapper. Contains page content -->
-  <!-- <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+   <div class="content-wrapper">
+     Content Header (Page header) 
     <section class="content-header">
       <h1>
         Loại nhân viên
@@ -296,16 +296,16 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-  </div> -->
+  </div> 
 
 <?php
   // include
-//   include('../layouts/footer.php');
-// }
-// else
-// {
-//   // go to pages login
-//   header('Location: dang-nhap.php');
-// }
+  include('../layouts/footer.php');
+}
+else
+{
+  // go to pages login
+  header('Location: dang-nhap.php');
+}
 
-?> -->
+?> 

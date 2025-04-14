@@ -3,61 +3,61 @@
 // create session
 // session_start();
 
-// if(isset($_SESSION['username']) && isset($_SESSION['level']))
-// {
-//   // include file
-//   include('../layouts/header.php');
-//   include('../layouts/topbar.php');
-//   include('../layouts/sidebar.php');
+if(isset($_SESSION['username']) && isset($_SESSION['level']))
+{
+  // include file
+  include('../layouts/header.php');
+  include('../layouts/topbar.php');
+  include('../layouts/sidebar.php');
 
 
-//   // show data
-//   if(isset($_GET['id']))
-//   {
-//     $id = $_GET['id'];
-//     $showData = "SELECT id, ma_bang_cap, ten_bang_cap, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua FROM bang_cap WHERE id = $id";
-//     $result = mysqli_query($conn, $showData);
-//     $row = mysqli_fetch_array($result);
-//   }
+  // show data
+  if(isset($_GET['id']))
+  {
+    $id = $_GET['id'];
+    $showData = "SELECT id, ma_bang_cap, ten_bang_cap, ghi_chu, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua FROM bang_cap WHERE id = $id";
+    $result = mysqli_query($conn, $showData);
+    $row = mysqli_fetch_array($result);
+  }
 
 
-//   // delete record
-//   if(isset($_POST['save']))
-//   {
-//     // create array error
-//     $error = array();
-//     $success = array();
-//     $showMess = false;
+  // delete record
+  if(isset($_POST['save']))
+  {
+    // create array error
+    $error = array();
+    $success = array();
+    $showMess = false;
 
-//     // get id in form
-//     $certificateName = $_POST['certificateName'];
-//     $description = $_POST['description'];
-//     $personCreate = $_POST['personCreate'];
-//     $dateCreate = date("Y-m-d H:i:s");
-//     $personEdit = $_POST['personEdit'];
-//     $dateEdit = date("Y-m-d H:i:s");
+    // get id in form
+    $certificateName = $_POST['certificateName'];
+    $description = $_POST['description'];
+    $personCreate = $_POST['personCreate'];
+    $dateCreate = date("Y-m-d H:i:s");
+    $personEdit = $_POST['personEdit'];
+    $dateEdit = date("Y-m-d H:i:s");
 
-//     // validate
-//     if(empty($certificateName))
-//       $error['certificateName'] = 'Vui lòng nhập <b> tên bằng cấp </b>';
+    // validate
+    if(empty($certificateName))
+      $error['certificateName'] = 'Vui lòng nhập <b> tên bằng cấp </b>';
 
-//     if(!$error)
-//     {
-//       $showMess = true;
-//       $update = " UPDATE bang_cap SET 
-//                   ten_bang_cap = '$certificateName',
-//                   ghi_chu = '$description',
-//                   nguoi_sua = '$personEdit',
-//                   ngay_sua = '$dateEdit'
-//                   WHERE id = $id";
-//       $result = mysqli_query($conn, $update);
-//       if($result)
-//       {
-//         $success['success'] = 'Lưu lại thành công';
-//         echo '<script>setTimeout("window.location=\'sua-bang-cap.php?p=staff&a=certificate&id='.$id.'\'",1000);</script>';
-//       }
-//     }
-//   }
+    if(!$error)
+    {
+      $showMess = true;
+      $update = " UPDATE bang_cap SET 
+                  ten_bang_cap = '$certificateName',
+                  ghi_chu = '$description',
+                  nguoi_sua = '$personEdit',
+                  ngay_sua = '$dateEdit'
+                  WHERE id = $id";
+      $result = mysqli_query($conn, $update);
+      if($result)
+      {
+        $success['success'] = 'Lưu lại thành công';
+        echo '<script>setTimeout("window.location=\'sua-bang-cap.php?p=staff&a=certificate&id='.$id.'\'",1000);</script>';
+      }
+    }
+  }
 
 ?>
 
@@ -182,12 +182,12 @@
 
 <?php
   // include
-//   include('../layouts/footer.php');
-// }
-// else
-// {
-//   // go to pages login
-//   header('Location: dang-nhap.php');
-// }
+  include('../layouts/footer.php');
+}
+else
+{
+  // go to pages login
+  header('Location: dang-nhap.php');
+}
 
 ?> -->
