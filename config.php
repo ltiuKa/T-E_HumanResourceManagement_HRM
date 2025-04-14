@@ -1,7 +1,11 @@
 <?php
 
-	$conn = mysqli_connect("localhost", "root", "", "quanly_nhansu");
+	//$conn = mysqli_connect("localhost", "root", "", "quanly_nhansu");
 	//$conn = mysqli_connect("am1shyeyqbxzy8gc.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "itsiajvhn4a184io", "qeh0dyxjt8lrj1gs", "qzjiq6mzfi02utjx");
+	$conn = mysqli_connect("p2d0untihotgr5f6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", //host
+							"q6eozefo5y6pr4so", //username
+							"l5bx0kfzdy2wsa0d", //password
+							"usrwvkzhhhfj2drg"); //database
 
 	if (!$conn) {
 	    echo "Error: Unable to connect to MySQL." . PHP_EOL;
